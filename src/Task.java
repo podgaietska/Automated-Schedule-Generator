@@ -1,5 +1,3 @@
-package models;
-
 public class Task {
     private final long ID;
     private final String DESCRIPTION;

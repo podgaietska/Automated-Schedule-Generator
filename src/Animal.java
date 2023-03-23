@@ -1,5 +1,3 @@
-package models;
-
 public class Animal {
     private final long ID;
     private final String NAME;

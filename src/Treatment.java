@@ -1,5 +1,3 @@
-package models;
-
 public class Treatment {
     private long id;
     private Animal animal;
