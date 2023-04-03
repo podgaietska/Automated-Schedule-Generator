@@ -1,3 +1,5 @@
+package edu.ucalgary.oop;
+
 public class Task {
   private final long ID;
   private final String DESCRIPTION;

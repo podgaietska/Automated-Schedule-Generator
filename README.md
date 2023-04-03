@@ -12,7 +12,7 @@
 - Compile
 
 ```bash
-javac -cp "lib/mysql-connector-java-8.0.23.jar" -d bin edu/ucalgary/oop/*.java
+javac -cp "lib/mysql-connector-java-8.0.23.jar" -d bin src/edu/ucalgary/oop/*.java
 ```
 
 - Run in MacOS

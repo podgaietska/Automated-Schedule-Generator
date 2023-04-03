@@ -1,3 +1,5 @@
+package edu.ucalgary.oop;
+
 public class Treatment {
   private long id;
   private Animal animal;
