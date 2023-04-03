@@ -12,17 +12,17 @@
 - Compile
 
 ```bash
-javac -cp "lib/mysql-connector-java-8.0.23.jar" src/Main.java
+javac -cp "lib/mysql-connector-java-8.0.23.jar" -d bin src/Main.java src/Models/*.java
 ```
 
 - Run in MacOS
 
 ```bash
-java -cp "lib/mysql-connector-java-8.0.23.jar:src" Main
+java -cp "lib/mysql-connector-java-8.0.23.jar:bin" Main
 ```
 
 - Run in Windows
 
 ```bash
-java -cp "lib/mysql-connector-java-8.0.23.jar;src" Main
+java -cp "lib/mysql-connector-java-8.0.23.jar;bin" Main
 ```
