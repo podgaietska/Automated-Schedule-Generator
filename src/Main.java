@@ -9,7 +9,7 @@ public class Main {
 
     String url = "jdbc:mysql://localhost:3306/EWR";
     String username = "root";
-    String password = "AxOmSaPe15092002";
+    String password = "AxOmSaPe15092002"; // Enter your personal password (This is configured for Axel's)
 
     try (Connection connection = DriverManager.getConnection(url, username, password)) {
       Statement statement = connection.createStatement();
