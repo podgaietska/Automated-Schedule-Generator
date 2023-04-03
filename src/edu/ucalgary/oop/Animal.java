@@ -5,6 +5,8 @@ public class Animal {
   private final String name;
   private final String species;
   private final String type;
+  private FeedingSchedule feedingSchedule;
+  private CleaningCage cleaningCage;
 
   public Animal(int id, String name, String species) throws IllegalArgumentException {
     if (id <= 0 || name == null || name.trim().isEmpty() || species == null || species.trim().isEmpty()) {
@@ -21,6 +23,9 @@ public class Animal {
       this.type = "crepescular";
     else
       this.type = "diurnal";
+
+    this.feedingSchedule = new FeedingSchedule(this.species, this.type);
+    this.cleaningCage = new CleaningCage(this.species);
   }
 
   public int getId() {
@@ -37,6 +42,10 @@ public class Animal {
 
   public String getType() {
     return type;
+  }
+
+  public FeedingSchedule getFeedingSchedule() {
+    return feedingSchedule;
   }
 
   @Override

@@ -36,6 +36,6 @@ public class Treatment {
 
   @Override
   public String toString() {
-    return "ID: " + id + ", AnimalID: " + animal.getId() + ", TaskID: " + task.getId() + ", Start Hour: " + startHour;
+    return "Animal name: " + animal.getName() + ", Task description: " + task.getDescription() + ", Start Hour: " + startHour + ", Duration: " + task.getDuration();
   }
 }

@@ -12,7 +12,7 @@ public class Main {
 
     String url = "jdbc:mysql://localhost:3306/EWR";
     String username = "root";
-    String password = "AxOmSaPe15092002"; // Enter your personal password
+    String password = "sea100403"; // Enter your personal password
 
     ArrayList<Animal> animals = new ArrayList<>();
     ArrayList<Task> tasks = new ArrayList<>();
@@ -65,7 +65,10 @@ public class Main {
       e.printStackTrace();
     }
 
-    for (Treatment treatment : treatments)
-      System.out.println(treatment);
+    for (Animal animal: animals){
+      System.out.println(animal.getFeedingSchedule());
+    }
+    
+
   }
 }
