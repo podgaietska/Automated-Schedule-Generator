@@ -24,5 +24,5 @@ java -cp "lib/mysql-connector-java-8.0.23.jar:bin" Main
 - Run in Windows
 
 ```bash
-java -cp "lib/mysql-connector-java-8.0.23.jar;bin" Main
+java -cp "lib/mysql-connector-java-8.0.23.jar;bin" edu/ucalgary/oop/Main
 ```
