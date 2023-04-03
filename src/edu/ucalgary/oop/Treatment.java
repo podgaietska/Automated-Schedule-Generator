@@ -1,60 +1,65 @@
 package edu.ucalgary.oop;
 
 public class Treatment {
-  private long id;
-  private Animal animal;
-  private Task task;
-  private int startTime;
-  private boolean backupVolunteer;
+  private int id;
+  private int animalId;
+  private int taskId;
+  private int startHour;
+  // private boolean backupVolunteer;
 
-  public Treatment(long id, Animal animal, Task task, int startTime) throws IllegalArgumentException {
-    if (id == 0 || animal == null || task == null || startTime == 0) {
+  public Treatment(int id, int animalId, int taskId, int startHour) throws IllegalArgumentException {
+    if (id == 0 || animalId == 0 || taskId == 0 || startHour < 0) {
       throw new IllegalArgumentException("All fields must be filled out");
     }
     this.id = id;
-    this.animal = animal;
-    this.task = task;
-    this.startTime = startTime;
-    this.backupVolunteer = false;
+    this.animalId = animalId;
+    this.taskId = taskId;
+    this.startHour = startHour;
+    // this.backupVolunteer = false;
   }
 
   public long getId() {
     return id;
   }
 
-  public void setId(long id) {
+  public void setId(int id) {
     this.id = id;
   }
 
-  public Animal getAnimal() {
-    return animal;
+  public int getAnimalId() {
+    return animalId;
   }
 
-  public void setAnimal(Animal animal) {
-    this.animal = animal;
+  public void setAnimal(int animalId) {
+    this.animalId = animalId;
   }
 
-  public Task getTask() {
-    return task;
+  public int getTaskId() {
+    return taskId;
   }
 
-  public void setTask(Task task) {
-    this.task = task;
+  public void setTask(int taskId) {
+    this.taskId = taskId;
   }
 
-  public int getStartTime() {
-    return startTime;
+  public int getStartHour() {
+    return startHour;
   }
 
-  public void setStartTime(int startTime) {
-    this.startTime = startTime;
+  public void setStartTime(int startHour) {
+    this.startHour = startHour;
   }
 
-  public boolean isBackupVolunteer() {
-    return backupVolunteer;
+  @Override
+  public String toString() {
+    return "ID: " + id + ", AnimalID: " + animalId + ", TaskID: " + taskId + ", Start Hour: " + startHour;
   }
 
-  public void setBackupVolunteer(boolean backupVolunteer) {
-    this.backupVolunteer = backupVolunteer;
-  }
+  // public boolean isBackupVolunteer() {
+  // return backupVolunteer;
+  // }
+
+  // public void setBackupVolunteer(boolean backupVolunteer) {
+  // this.backupVolunteer = backupVolunteer;
+  // }
 }

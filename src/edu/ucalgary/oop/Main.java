@@ -16,6 +16,7 @@ public class Main {
 
     ArrayList<Animal> animals = new ArrayList<>();
     ArrayList<Task> tasks = new ArrayList<>();
+    ArrayList<Treatment> treatments = new ArrayList<>();
 
     try (Connection connection = DriverManager.getConnection(url, username, password)) {
 
@@ -40,6 +41,17 @@ public class Main {
         tasks.add(new Task(id, description, duration, maxWindow));
       }
 
+      Statement treatmentsQuery = connection.createStatement();
+      ResultSet treatmentsResultSet = treatmentsQuery.executeQuery("SELECT * FROM TREATMENTS");
+
+      while (treatmentsResultSet.next()) {
+        int id = treatmentsResultSet.getInt("TreatmentID");
+        int animalId = treatmentsResultSet.getInt("AnimalID");
+        int task = treatmentsResultSet.getInt("TaskID");
+        int startHour = treatmentsResultSet.getInt("StartHour");
+        treatments.add(new Treatment(id, animalId, task, startHour));
+      }
+
     } catch (SQLException e) {
       System.out.println("Connection to the database failed. Try checking the password!");
       e.printStackTrace();
@@ -56,5 +68,7 @@ public class Main {
       System.out.println(task);
     }
 
+    for (Treatment treatment : treatments)
+      System.out.println(treatment);
   }
 }
