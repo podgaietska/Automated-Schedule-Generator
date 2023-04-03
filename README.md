@@ -18,7 +18,7 @@ javac -cp "lib/mysql-connector-java-8.0.23.jar" -d bin src/edu/ucalgary/oop/*.ja
 - Run in MacOS
 
 ```bash
-java -cp "lib/mysql-connector-java-8.0.23.jar:bin" Main
+java -cp "lib/mysql-connector-java-8.0.23.jar:bin" edu/ucalgary/oop/Main
 ```
 
 - Run in Windows
