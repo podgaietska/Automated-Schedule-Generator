@@ -1,34 +1,40 @@
 package edu.ucalgary.oop;
 
 public class Task {
-  private final long ID;
-  private final String DESCRIPTION;
-  private final int DURATION;
-  private final int MAX_WINDOW;
+  private final int id;
+  private final String description;
+  private final int duration;
+  private final int maxWindow;
 
-  public Task(long ID, String DESCRIPTION, int DURATION, int MAX_WINDOW) throws IllegalArgumentException {
-    if (ID == 0 || DESCRIPTION == null || DURATION == 0 || MAX_WINDOW == 0) {
-      throw new IllegalArgumentException("All fields must be filled out");
+  public Task(int id, String description, int duration, int maxWindow) throws IllegalArgumentException {
+    if (id <= 0 || description == null || description.trim().isEmpty() || duration <= 0 || maxWindow <= 0) {
+      throw new IllegalArgumentException("Invalid input for Task");
     }
-    this.ID = ID;
-    this.DESCRIPTION = DESCRIPTION;
-    this.DURATION = DURATION;
-    this.MAX_WINDOW = MAX_WINDOW;
+
+    this.id = id;
+    this.description = description;
+    this.duration = duration;
+    this.maxWindow = maxWindow;
   }
 
-  public long getID() {
-    return ID;
+  public int getId() {
+    return id;
   }
 
-  public String getDESCRIPTION() {
-    return DESCRIPTION;
+  public String getDescription() {
+    return description;
   }
 
-  public int getDURATION() {
-    return DURATION;
+  public int getDuration() {
+    return duration;
   }
 
-  public int getMAX_WINDOW() {
-    return MAX_WINDOW;
+  public int getMaxWindow() {
+    return maxWindow;
+  }
+
+  @Override
+  public String toString() {
+    return "ID: " + id + ", Description: " + description + ", Duration: " + duration + ", Max Window: " + maxWindow;
   }
 }
