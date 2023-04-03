@@ -9,21 +9,20 @@
 
 ### How to run
 
-- Compile (Windows)
+- Compile
 
 ```bash
-java -cp "lib/mysql-connector-java-8.0.23.jar;bin" Main
-
+javac -cp "lib/mysql-connector-java-8.0.23.jar" src/Main.java
 ```
 
-- Compile (MacOS)
+- Run in MacOS
 
 ```bash
-javac -cp "lib/mysql-connector-java-8.0.23.jar" -d bin src/Main.java
+java -cp "lib/mysql-connector-java-8.0.23.jar:src" Main
 ```
 
-- Run
+- Run in Windows
 
 ```bash
-java -cp "lib/mysql-connector-java-8.0.23.jar:bin" Main
+java -cp "lib/mysql-connector-java-8.0.23.jar;src" Main
 ```
