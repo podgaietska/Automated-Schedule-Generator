@@ -47,9 +47,14 @@ public class Main {
       while (treatmentsResultSet.next()) {
         int id = treatmentsResultSet.getInt("TreatmentID");
         int animalId = treatmentsResultSet.getInt("AnimalID");
-        int task = treatmentsResultSet.getInt("TaskID");
+        int taskId = treatmentsResultSet.getInt("TaskID");
         int startHour = treatmentsResultSet.getInt("StartHour");
-        treatments.add(new Treatment(id, animalId, task, startHour));
+        
+        for (Animal animal : animals)
+          if (animal.getId() == animalId)
+            for (Task task : tasks)
+              if (task.getId() == taskId)
+                treatments.add(new Treatment(id, animal, task, startHour));
       }
 
     } catch (SQLException e) {
@@ -58,14 +63,6 @@ public class Main {
     } catch (IllegalArgumentException e) {
       System.out.println("Error: " + e);
       e.printStackTrace();
-    }
-
-    for (Animal animal : animals) {
-      System.out.println(animal);
-    }
-
-    for (Task task : tasks) {
-      System.out.println(task);
     }
 
     for (Treatment treatment : treatments)
