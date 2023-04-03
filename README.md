@@ -12,11 +12,11 @@
 - Compile (Windows)
 
 ```bash
-java -cp "lib/mysql-connector-java-x.y.z.jar;bin" Main
+java -cp "lib/mysql-connector-java-8.0.23.jar;bin" Main
 
 ```
 
--Compile (MacOS)
+- Compile (MacOS)
 
 ```bash
 javac -cp "lib/mysql-connector-java-8.0.23.jar" -d bin src/Main.java
