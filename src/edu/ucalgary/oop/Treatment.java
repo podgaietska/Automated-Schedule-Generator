@@ -15,13 +15,24 @@ public class Treatment {
     this.animal = animal;
     this.task = task;
     this.startHour = startHour;
- 
+
   }
 
-  public long getId() {
-    return id;
+  public int getId() {
+    return this.id;
   }
 
+  public Animal getAnimal() {
+    return this.animal;
+  }
+
+  public Task getTask() {
+    return this.task;
+  }
+
+  public int getStartHour() {
+    return this.startHour;
+  }
 
   @Override
   public String toString() {
