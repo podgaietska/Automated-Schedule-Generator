@@ -1,48 +1,48 @@
 package edu.ucalgary.oop;
 
 public class Animal {
-  private final int id;
-  private final String name;
-  private final String species;
-  private final String type;
+  private final int ID;
+  private final String NAME;
+  private final String SPECIES;
+  private final String TYPE;
   private FeedingSchedule feedingSchedule;
   private CleaningCage cleaningCage;
 
-  public Animal(int id, String name, String species) throws IllegalArgumentException {
-    if (id <= 0 || name == null || name.trim().isEmpty() || species == null || species.trim().isEmpty()) {
+  public Animal(int ID, String NAME, String SPECIES) throws IllegalArgumentException {
+    if (ID <= 0 || NAME == null || NAME.trim().isEmpty() || SPECIES == null || SPECIES.trim().isEmpty()) {
       throw new IllegalArgumentException("Invalid input for Animal");
     }
 
-    this.id = id;
-    this.name = name;
-    this.species = species;
+    this.ID = ID;
+    this.NAME = NAME;
+    this.SPECIES = SPECIES;
 
-    if (species.equals("fox") || species.equals("racoon")) {
-      this.type = "nocturnal";
-    } else if (species.equals("coyote") || species.equals("porcupine")) {
-      this.type = "crepescular";
+    if (SPECIES.equals("fox") || SPECIES.equals("racoon")) {
+      this.TYPE = "nocturnal";
+    } else if (SPECIES.equals("coyote") || SPECIES.equals("porcupine")) {
+      this.TYPE = "crepescular";
     } else {
-      this.type = "diurnal";
+      this.TYPE = "diurnal";
     }
 
-    this.feedingSchedule = new FeedingSchedule(this.name, this.species, this.type);
-    this.cleaningCage = new CleaningCage(this.name, this.species);
+    this.feedingSchedule = new FeedingSchedule(this.NAME, this.SPECIES, this.TYPE);
+    this.cleaningCage = new CleaningCage(this.NAME, this.SPECIES);
   }
 
-  public int getId() {
-    return this.id;
+  public int getID() {
+    return this.ID;
   }
 
-  public String getName() {
-    return this.name;
+  public String getNAME() {
+    return this.NAME;
   }
 
-  public String getSpecies() {
-    return this.species;
+  public String getSPECIES() {
+    return this.SPECIES;
   }
 
-  public String getType() {
-    return this.type;
+  public String getTYPE() {
+    return this.TYPE;
   }
 
   public FeedingSchedule getFeedingSchedule() {
@@ -56,6 +56,6 @@ public class Animal {
 
   @Override
   public String toString() {
-    return "ID: " + id + ", Name: " + name + ", Species: " + species + ", Type: " + type;
+    return "ID: " + ID + ", Name: " + NAME + ", Species: " + SPECIES + ", Type: " + TYPE;
   }
 }

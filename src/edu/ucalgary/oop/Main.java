@@ -51,7 +51,7 @@ public class Main {
         int startHour = treatmentsResultSet.getInt("StartHour");
 
         for (Animal animal : animals)
-          if (animal.getId() == animalId)
+          if (animal.getID() == animalId)
             for (Task task : tasks)
               if (task.getId() == taskId)
                 treatments.add(new Treatment(id, animal, task, startHour));
