@@ -1,42 +1,42 @@
 package edu.ucalgary.oop;
 
 public class Treatment {
-  private final int id;
-  private final Animal animal;
-  private final Task task;
-  private final int startHour;
+  private final int ID;
+  private final Animal ANIMAL;
+  private final Task TASK;
+  private final int START_HOUR;
 
-  public Treatment(int id, Animal animal, Task task, int startHour) throws IllegalArgumentException {
-    if (id == 0 || animal == null || task == null || startHour < 0) {
+  public Treatment(int ID, Animal ANIMAL, Task TASK, int START_HOUR) throws IllegalArgumentException {
+    if (ID == 0 || ANIMAL == null || TASK == null || START_HOUR < 0) {
       throw new IllegalArgumentException("All fields must be filled out");
     }
 
-    this.id = id;
-    this.animal = animal;
-    this.task = task;
-    this.startHour = startHour;
+    this.ID = ID;
+    this.ANIMAL = ANIMAL;
+    this.TASK = TASK;
+    this.START_HOUR = START_HOUR;
 
   }
 
-  public int getId() {
-    return this.id;
+  public int getID() {
+    return this.ID;
   }
 
-  public Animal getAnimal() {
-    return this.animal;
+  public Animal getANIMAL() {
+    return this.ANIMAL;
   }
 
-  public Task getTask() {
-    return this.task;
+  public Task getTASK() {
+    return this.TASK;
   }
 
-  public int getStartHour() {
-    return this.startHour;
+  public int getSTART_HOUR() {
+    return this.START_HOUR;
   }
 
   @Override
   public String toString() {
-    return "Animal name: " + animal.getNAME() + ", Task description: " + task.getDescription() + ", Start Hour: "
-        + startHour + ", Duration: " + task.getDuration() + ", Max Window: " + task.getMaxWindow();
+    return "ANIMAL name: " + ANIMAL.getNAME() + ", Task description: " + TASK.getDescription() + ", Start Hour: "
+        + START_HOUR + ", Duration: " + TASK.getDuration() + ", Max Window: " + TASK.getMaxWindow();
   }
 }
