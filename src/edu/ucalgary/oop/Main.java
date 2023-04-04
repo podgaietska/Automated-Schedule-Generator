@@ -17,7 +17,7 @@ public class Main {
     ArrayList<Animal> animals = new ArrayList<>();
     ArrayList<Task> tasks = new ArrayList<>();
     ArrayList<Treatment> treatments = new ArrayList<>();
-    
+
     try (Connection connection = DriverManager.getConnection(url, username, password)) {
 
       Statement animalsQuery = connection.createStatement();
@@ -69,12 +69,12 @@ public class Main {
 
     schedule.addAnimals(animals);
 
-    for (Animal animal: animals){
+    for (Animal animal : animals) {
       schedule.addFeeding(animal.getFeedingSchedule());
       schedule.addCageCleaning(animal.getCleaningCage());
     }
 
-    for (Treatment treatment: treatments){
+    for (Treatment treatment : treatments) {
       schedule.addTreatment(treatment);
       System.out.println(treatment);
     }
@@ -86,8 +86,6 @@ public class Main {
     for (int i = 0; i < 24; i++) {
       System.out.println("Hour " + i + ": " + scheduleMap.get(i));
     }
-
-
 
   }
 }

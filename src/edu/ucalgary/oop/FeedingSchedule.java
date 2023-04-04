@@ -8,7 +8,6 @@ public class FeedingSchedule {
     private int startHour;
     private int timeWindow;
     private int prep;
-    
 
     public FeedingSchedule(String name, String species, String type) {
         this.duration = 5;
@@ -23,7 +22,7 @@ public class FeedingSchedule {
         else
             this.startHour = 8;
 
-        if (species.equals("porcupine") || species.equals("racoon") || species.equals("beaver")) {
+        if (species.equals("porcupine") || species.equals("raccoon") || species.equals("beaver")) {
             this.prep = 0;
         } else if (species.equals("coyote")) {
             this.prep = 10;
@@ -51,7 +50,8 @@ public class FeedingSchedule {
 
     @Override
     public String toString() {
-        return "To " + description + " " + name + ", Start time: " + startHour + ", Time Window: " + timeWindow + ", Duration: " + duration + ", Prep: " + prep;
-      }
+        return "To " + description + " " + name + ", Start time: " + startHour + ", Time Window: " + timeWindow
+                + ", Duration: " + duration + ", Prep: " + prep;
+    }
 
 }
