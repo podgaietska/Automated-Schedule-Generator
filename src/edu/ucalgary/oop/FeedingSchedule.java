@@ -32,6 +32,18 @@ public class FeedingSchedule {
 
     }
 
+    public String getSpecies() {
+        return species;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description + " " + species;
+    }
+
     public int getDuration() {
         return duration;
     }
