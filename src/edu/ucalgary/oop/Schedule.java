@@ -78,15 +78,15 @@ public class Schedule {
 
     public void addAnimals(ArrayList<Animal> animals) {
         for (Animal animal : animals) {
-            if (animal.getSpecies().equals("porcupine")) {
+            if (animal.getSPECIES().equals("porcupine")) {
                 this.animalCount.put("porcupine", animalCount.get("porcupine") + 1);
-            } else if (animal.getSpecies().equals("coyote")) {
+            } else if (animal.getSPECIES().equals("coyote")) {
                 this.animalCount.put("coyote", animalCount.get("coyote") + 1);
-            } else if (animal.getSpecies().equals("fox")) {
+            } else if (animal.getSPECIES().equals("fox")) {
                 this.animalCount.put("fox", animalCount.get("fox") + 1);
-            } else if (animal.getSpecies().equals("raccoon")) {
+            } else if (animal.getSPECIES().equals("raccoon")) {
                 this.animalCount.put("raccoon", animalCount.get("raccoon") + 1);
-            } else if (animal.getSpecies().equals("beaver")) {
+            } else if (animal.getSPECIES().equals("beaver")) {
                 this.animalCount.put("beaver", animalCount.get("beaver") + 1);
             }
         }
