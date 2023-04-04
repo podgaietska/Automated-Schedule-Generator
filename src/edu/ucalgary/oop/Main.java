@@ -53,7 +53,7 @@ public class Main {
         for (Animal animal : animals)
           if (animal.getID() == animalId)
             for (Task task : tasks)
-              if (task.getId() == taskId)
+              if (task.getID() == taskId)
                 treatments.add(new Treatment(id, animal, task, startHour));
       }
 

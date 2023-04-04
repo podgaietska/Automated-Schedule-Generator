@@ -79,7 +79,7 @@ public class Treatment {
    */
   @Override
   public String toString() {
-    return "ANIMAL name: " + ANIMAL.getNAME() + ", Task description: " + TASK.getDescription() + ", Start Hour: "
-        + START_HOUR + ", Duration: " + TASK.getDuration() + ", Max Window: " + TASK.getMaxWindow();
+    return "ANIMAL name: " + ANIMAL.getNAME() + ", Task description: " + TASK.getDESCRIPTION() + ", Start Hour: "
+        + START_HOUR + ", Duration: " + TASK.getDURATION() + ", Max Window: " + TASK.getMAXWINDOW();
   }
 }

@@ -54,19 +54,19 @@ public class Schedule {
     // }
 
     public void addTasksToSchedule() {
-        Collections.sort(treatments, Comparator.comparing(Treatment -> Treatment.getTASK().getMaxWindow()));
+        Collections.sort(treatments, Comparator.comparing(Treatment -> Treatment.getTASK().getMAXWINDOW()));
 
         for (Treatment treatment : treatments) {
             int treatmentStartHour = treatment.getSTART_HOUR();
-            int treatmentMaxWindow = treatment.getTASK().getMaxWindow();
+            int treatmentMaxWindow = treatment.getTASK().getMAXWINDOW();
 
             int currentWindow = 0;
             while (currentWindow < treatmentMaxWindow) {
                 int currentHour = treatmentStartHour + currentWindow;
-                if (schedule.get(currentHour).getTimeRemaining() >= treatment.getTASK().getDuration()) {
-                    schedule.get(currentHour).addTask(treatment.getTASK().getDescription());
+                if (schedule.get(currentHour).getTimeRemaining() >= treatment.getTASK().getDURATION()) {
+                    schedule.get(currentHour).addTask(treatment.getTASK().getDESCRIPTION());
                     int newTimeRemaining = schedule.get(currentHour).getTimeRemaining()
-                            - treatment.getTASK().getDuration();
+                            - treatment.getTASK().getDURATION();
                     schedule.get(currentHour).updateTimeRemaining(newTimeRemaining);
                     break;
                 } else {
