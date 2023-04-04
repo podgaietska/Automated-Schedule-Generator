@@ -14,7 +14,7 @@ public class Schedule {
         animalCount.put("coyote", 0);
         animalCount.put("porcupine", 0);
         animalCount.put("fox", 0);
-        animalCount.put("racoon", 0);
+        animalCount.put("raccoon", 0);
         animalCount.put("beaver", 0);
 
         for (int i = 0; i < 24; i++) {
@@ -84,8 +84,8 @@ public class Schedule {
                 this.animalCount.put("coyote", animalCount.get("coyote") + 1);
             } else if (animal.getSpecies().equals("fox")) {
                 this.animalCount.put("fox", animalCount.get("fox") + 1);
-            } else if (animal.getSpecies().equals("racoon")) {
-                this.animalCount.put("racoon", animalCount.get("racoon") + 1);
+            } else if (animal.getSpecies().equals("raccoon")) {
+                this.animalCount.put("raccoon", animalCount.get("raccoon") + 1);
             } else if (animal.getSpecies().equals("beaver")) {
                 this.animalCount.put("beaver", animalCount.get("beaver") + 1);
             }

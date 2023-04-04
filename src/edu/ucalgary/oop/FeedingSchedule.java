@@ -22,7 +22,7 @@ public class FeedingSchedule {
         else
             this.startHour = 8;
 
-        if (species.equals("porcupine") || species.equals("racoon") || species.equals("beaver")) {
+        if (species.equals("porcupine") || species.equals("raccoon") || species.equals("beaver")) {
             this.prep = 0;
         } else if (species.equals("coyote")) {
             this.prep = 10;

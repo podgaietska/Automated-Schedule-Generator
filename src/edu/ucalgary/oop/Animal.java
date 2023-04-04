@@ -17,7 +17,7 @@ public class Animal {
     this.name = name;
     this.species = species;
 
-    if (species.equals("fox") || species.equals("racoon")) {
+    if (species.equals("fox") || species.equals("raccoon")) {
       this.type = "nocturnal";
     } else if (species.equals("coyote") || species.equals("porcupine")) {
       this.type = "crepescular";
