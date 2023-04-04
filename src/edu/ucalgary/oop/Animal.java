@@ -17,17 +17,10 @@ public class Animal {
     this.NAME = NAME;
     this.SPECIES = SPECIES;
 
-<<<<<<< HEAD
-    if (SPECIES.equals("fox") || SPECIES.equals("racoon")) {
+    if (SPECIES.equals("fox") || SPECIES.equals("raccoon")) {
       this.TYPE = "nocturnal";
     } else if (SPECIES.equals("coyote") || SPECIES.equals("porcupine")) {
       this.TYPE = "crepescular";
-=======
-    if (species.equals("fox") || species.equals("raccoon")) {
-      this.type = "nocturnal";
-    } else if (species.equals("coyote") || species.equals("porcupine")) {
-      this.type = "crepescular";
->>>>>>> c7ab4701187e8445de5f3b5cb89f6a826a01f281
     } else {
       this.TYPE = "diurnal";
     }
