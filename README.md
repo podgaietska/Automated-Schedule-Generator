@@ -6,7 +6,7 @@
 
 - Nicole Izdraila (30147366)
 - Mariia Podgaietska
-- Afrah Mohammad
+- Afrah Mohammad (30144844)
 - Axel Sanchez (30145429)
 
 ### How to run the program
