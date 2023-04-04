@@ -1,4 +1,5 @@
 package edu.ucalgary.oop;
+import java.util.regex.*;
 
 /**
  * The Animal class is used for this project. It takes in
@@ -45,7 +46,12 @@ public class Animal {
       this.TYPE = "diurnal";
     }
 
-    this.feedingSchedule = new FeedingSchedule(this.NAME, this.SPECIES, this.TYPE);
+    Pattern pattern = Pattern.compile("^[a-zA-Z]+$");
+    Matcher matcher = pattern.matcher(this.NAME);
+
+    if (matcher.find()){
+      this.feedingSchedule = new FeedingSchedule(this.NAME, this.SPECIES, this.TYPE);
+    }
     this.cleaningCage = new CleaningCage(this.NAME, this.SPECIES);
   }
 

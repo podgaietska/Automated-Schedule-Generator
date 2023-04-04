@@ -12,7 +12,7 @@ public class Main {
 
     String url = "jdbc:mysql://localhost:3306/EWR";
     String username = "root";
-    String password = "Barcelona15"; // Enter your personal password
+    String password = "sea100403"; // Enter your personal password
 
     ArrayList<Animal> animals = new ArrayList<>();
     ArrayList<Task> tasks = new ArrayList<>();
@@ -70,13 +70,13 @@ public class Main {
     schedule.addAnimals(animals);
 
     for (Animal animal : animals) {
-      schedule.addFeeding(animal.getFeedingSchedule());
+      if (animal.getFeedingSchedule() != null)
+        schedule.addFeeding(animal.getFeedingSchedule());
       schedule.addCageCleaning(animal.getCleaningCage());
     }
 
     for (Treatment treatment : treatments) {
       schedule.addTreatment(treatment);
-      System.out.println(treatment);
     }
 
     schedule.addTasksToSchedule();
