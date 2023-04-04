@@ -1,8 +1,6 @@
-package test.edu.ucalgary.oop;
+package edu.ucalgary.oop;
 
 import org.junit.Test;
-
-import edu.ucalgary.oop.CleaningCage;
 
 import static org.junit.Assert.*;
 

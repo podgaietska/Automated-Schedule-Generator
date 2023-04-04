@@ -9,22 +9,36 @@
 - Afrah Mohammad
 - Axel Sanchez (30145429)
 
-### How to run
+### How to run the program
 
-- Compile
+- Compile program
 
 ```bash
 javac -cp "lib/mysql-connector-java-8.0.23.jar" -d bin src/edu/ucalgary/oop/*.java
 ```
 
-- Run in MacOS
+- Run program in MacOS
 
 ```bash
-java -cp "lib/mysql-connector-java-8.0.23.jar:bin" edu/ucalgary/oop/Main
+java -cp "lib/mysql-connector-java-8.0.23.jar:bin" edu.ucalgary.oop.Main
 ```
 
-- Run in Windows
+- Run program in Windows
 
 ```bash
-java -cp "lib/mysql-connector-java-8.0.23.jar;bin" edu/ucalgary/oop/Main
+java -cp "lib/mysql-connector-java-8.0.23.jar;bin" edu.ucalgary.oop.Main
+```
+
+### How to run the tests
+
+- Compile tests
+
+```bash
+javac -cp "lib/junit-4.13.2.jar:lib/hamcrest-core-1.3.jar" -d bin src/edu/ucalgary/oop/*.java test/edu/ucalgary/oop/*.java
+```
+
+- Run tests in MacOS
+
+```bash
+java -cp "bin:lib/junit-4.13.2.jar:lib/hamcrest-core-1.3.jar" org.junit.runner.JUnitCore edu.ucalgary.oop.AnimalTest edu.ucalgary.oop.CleaningCageTest edu.ucalgary.oop.FeedingScheduleTest edu.ucalgary.oop.TaskTest edu.ucalgary.oop.TreatmentTest
 ```
