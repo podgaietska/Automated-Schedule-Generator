@@ -22,27 +22,57 @@ public class Schedule {
         }
     }
 
+    // public void addTasksToSchedule() {
+    // Collections.sort(treatments, Comparator.comparing(Treatment ->
+    // Treatment.getTask().getMaxWindow()));
+    // for (Treatment treatment : treatments) {
+    // int treatmentStartHour = treatment.getStartHour();
+    // int treatmentMaxWindow = treatment.getTask().getMaxWindow();
+    // if (treatmentMaxWindow == 1) {
+    // schedule.get(treatmentStartHour).addTask(treatment.getTask().getDescription());
+    // int newTimeRemaining = schedule.get(treatmentStartHour).getTimeRemaining()
+    // - treatment.getTask().getDuration();
+    // schedule.get(treatmentStartHour).updateTimeRemaining(newTimeRemaining);
+    // }
+    // if (treatmentMaxWindow == 2) {
+    // if (schedule.get(treatmentStartHour).getTimeRemaining() <
+    // treatment.getTask().getDuration()) {
+    // schedule.get(treatmentStartHour +
+    // 1).addTask(treatment.getTask().getDescription());
+    // int newTimeRemaining = schedule.get(treatmentStartHour +
+    // 1).getTimeRemaining()
+    // - treatment.getTask().getDuration();
+    // schedule.get(treatmentStartHour + 1).updateTimeRemaining(newTimeRemaining);
+    // } else {
+    // schedule.get(treatmentStartHour).addTask(treatment.getTask().getDescription());
+    // int newTimeRemaining = schedule.get(treatmentStartHour).getTimeRemaining()
+    // - treatment.getTask().getDuration();
+    // schedule.get(treatmentStartHour).updateTimeRemaining(newTimeRemaining);
+    // }
+    // }
+    // }
+    // }
+
     public void addTasksToSchedule() {
         Collections.sort(treatments, Comparator.comparing(Treatment -> Treatment.getTask().getMaxWindow()));
+
         for (Treatment treatment : treatments) {
             int treatmentStartHour = treatment.getStartHour();
             int treatmentMaxWindow = treatment.getTask().getMaxWindow();
-            if (treatmentMaxWindow == 1) {
+            if (treatmentMaxWindow == 1){
                 schedule.get(treatmentStartHour).addTask(treatment.getTask().getDescription());
-                int newTimeRemaining = schedule.get(treatmentStartHour).getTimeRemaining()
-                        - treatment.getTask().getDuration();
+                int newTimeRemaining = schedule.get(treatmentStartHour).getTimeRemaining() - treatment.getTask().getDuration();
                 schedule.get(treatmentStartHour).updateTimeRemaining(newTimeRemaining);
             }
-            if (treatmentMaxWindow == 2) {
-                if (schedule.get(treatmentStartHour).getTimeRemaining() < treatment.getTask().getDuration()) {
+            if (treatmentMaxWindow == 2){
+                if (schedule.get(treatmentStartHour).getTimeRemaining() < treatment.getTask().getDuration()){          
                     schedule.get(treatmentStartHour + 1).addTask(treatment.getTask().getDescription());
-                    int newTimeRemaining = schedule.get(treatmentStartHour + 1).getTimeRemaining()
-                            - treatment.getTask().getDuration();
+                    int newTimeRemaining = schedule.get(treatmentStartHour + 1).getTimeRemaining() - treatment.getTask().getDuration();
                     schedule.get(treatmentStartHour + 1).updateTimeRemaining(newTimeRemaining);
-                } else {
+                }
+                else {
                     schedule.get(treatmentStartHour).addTask(treatment.getTask().getDescription());
-                    int newTimeRemaining = schedule.get(treatmentStartHour).getTimeRemaining()
-                            - treatment.getTask().getDuration();
+                    int newTimeRemaining = schedule.get(treatmentStartHour).getTimeRemaining() - treatment.getTask().getDuration();
                     schedule.get(treatmentStartHour).updateTimeRemaining(newTimeRemaining);
                 }
             } else {
