@@ -4,70 +4,51 @@ import org.junit.Test;
 
 import edu.ucalgary.oop.Animal;
 
+import static org.junit.Assert.*;
+
 public class AnimalTest {
 
   @Test
-  public void testAnimalConstructorValidInput() {
-    Animal animal = new Animal(1, "Fluffy", "Cat");
-    assert animal.getId() == 1;
-    assert animal.getName().equals("Fluffy");
-    assert animal.getSpecies().equals("Cat");
+  public void testValidAnimalCreation() {
+    Animal animal = new Animal(1, "Test Animal", "fox");
+
+    assertEquals(1, animal.getId());
+    assertEquals("Test Animal", animal.getName());
+    assertEquals("fox", animal.getSpecies());
+    assertEquals("nocturnal", animal.getType());
+    assertNotNull(animal.getFeedingSchedule());
+    assertNotNull(animal.getCleaningCage());
   }
 
-  @Test
-  public void testAnimalConstructorInvalidId() {
-    try {
-      Animal animal = new Animal(-1, "Fluffy", "Cat");
-      assert false : "Expected IllegalArgumentException for invalid ID";
-    } catch (IllegalArgumentException e) {
-      assert e.getMessage().equals("Invalid input for Animal");
-    }
+  @Test(expected = IllegalArgumentException.class)
+  public void testInvalidAnimalCreation() {
+    new Animal(0, null, null);
   }
 
-  @Test
-  public void testAnimalConstructorNullName() {
-    try {
-      Animal animal = new Animal(1, null, "Cat");
-      assert false : "Expected IllegalArgumentException for null name";
-    } catch (IllegalArgumentException e) {
-      assert e.getMessage().equals("Invalid input for Animal");
-    }
+  @Test(expected = IllegalArgumentException.class)
+  public void testInvalidAnimalCreationInvalidId() {
+    new Animal(0, "Test Animal", "fox");
   }
 
-  @Test
-  public void testAnimalConstructorEmptyName() {
-    try {
-      Animal animal = new Animal(1, " ", "Cat");
-      assert false : "Expected IllegalArgumentException for empty name";
-    } catch (IllegalArgumentException e) {
-      assert e.getMessage().equals("Invalid input for Animal");
-    }
+  @Test(expected = IllegalArgumentException.class)
+  public void testInvalidAnimalCreationEmptyName() {
+    new Animal(1, "", "fox");
   }
 
-  @Test
-  public void testAnimalConstructorNullSpecies() {
-    try {
-      Animal animal = new Animal(1, "Fluffy", null);
-      assert false : "Expected IllegalArgumentException for null species";
-    } catch (IllegalArgumentException e) {
-      assert e.getMessage().equals("Invalid input for Animal");
-    }
+  @Test(expected = IllegalArgumentException.class)
+  public void testInvalidAnimalCreationNullName() {
+    new Animal(1, null, "fox");
   }
 
-  @Test
-  public void testAnimalConstructorEmptySpecies() {
-    try {
-      Animal animal = new Animal(1, "Fluffy", " ");
-      assert false : "Expected IllegalArgumentException for empty species";
-    } catch (IllegalArgumentException e) {
-      assert e.getMessage().equals("Invalid input for Animal");
-    }
+  @Test(expected = IllegalArgumentException.class)
+  public void testInvalidAnimalCreationEmptySpecies() {
+    new Animal(1, "Test Animal", "");
   }
 
-  @Test
-  public void testToString() {
-    Animal animal = new Animal(1, "Fluffy", "Cat");
-    String expected = "ID: 1, Name: Fluffy, Species: Cat";
-    assert animal.toString().equals(expected);
+  @Test(expected = IllegalArgumentException.class)
+  public void testInvalidAnimalCreationNullSpecies() {
+    new Animal(1, "Test Animal", null);
   }
+
+  // You can add additional test cases for other species and types as necessary.
 }

@@ -17,35 +17,39 @@ public class Animal {
     this.name = name;
     this.species = species;
 
-    if (species.equals("fox") || species.equals("racoon"))
+    if (species.equals("fox") || species.equals("racoon")) {
       this.type = "nocturnal";
-    else if (species.equals("coyote") || species.equals("porcupine"))
+    } else if (species.equals("coyote") || species.equals("porcupine")) {
       this.type = "crepescular";
-    else
+    } else {
       this.type = "diurnal";
-
+    }
     this.feedingSchedule = new FeedingSchedule(this.species, this.type);
     this.cleaningCage = new CleaningCage(this.species);
   }
 
   public int getId() {
-    return id;
+    return this.id;
   }
 
   public String getName() {
-    return name;
+    return this.name;
   }
 
   public String getSpecies() {
-    return species;
+    return this.species;
   }
 
   public String getType() {
-    return type;
+    return this.type;
   }
 
   public FeedingSchedule getFeedingSchedule() {
-    return feedingSchedule;
+    return this.feedingSchedule;
+  }
+
+  public CleaningCage getCleaningCage() {
+    return this.cleaningCage;
   }
 
   @Override

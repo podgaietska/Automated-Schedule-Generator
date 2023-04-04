@@ -19,16 +19,14 @@ public class FeedingSchedule {
         else
             this.startHour = 8;
 
-        if (species.equals("porcupine") || species.equals("racoon") || species.equals("beaver")){
+        if (species.equals("porcupine") || species.equals("racoon") || species.equals("beaver")) {
             this.prep = 0;
-        }
-        else if (species.equals("coyote")){
+        } else if (species.equals("coyote")) {
             this.prep = 10;
-        }
-        else {
+        } else {
             this.prep = 0;
         }
-            
+
     }
 
     public int getDuration() {
@@ -42,15 +40,15 @@ public class FeedingSchedule {
     public int getTimeWindow() {
         return timeWindow;
     }
-    
+
     public int getPrep() {
         return prep;
     }
 
     @Override
     public String toString() {
-        return "To feed:" + species + ", Start time: " + startHour + ", Time Window: " + timeWindow + ", Duration: " + duration + ", Prep: " + prep;
-      }
+        return "To feed:" + species + ", Start time: " + startHour + ", Time Window: " + timeWindow + ", Duration: "
+                + duration + ", Prep: " + prep;
+    }
 
-    
 }
