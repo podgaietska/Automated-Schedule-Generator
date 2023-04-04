@@ -10,48 +10,15 @@ public class Schedule {
     private HashMap<String, Integer> animalCount = new HashMap<>();
 
     public Schedule() {
-
         animalCount.put("coyote", 0);
         animalCount.put("porcupine", 0);
         animalCount.put("fox", 0);
         animalCount.put("raccoon", 0);
         animalCount.put("beaver", 0);
-
         for (int i = 0; i < 24; i++) {
             schedule.put(i, new ToDo());
         }
     }
-
-    // public void addTasksToSchedule() {
-    // Collections.sort(treatments, Comparator.comparing(Treatment ->
-    // Treatment.getTask().getMaxWindow()));
-    // for (Treatment treatment : treatments) {
-    // int treatmentStartHour = treatment.getStartHour();
-    // int treatmentMaxWindow = treatment.getTask().getMaxWindow();
-    // if (treatmentMaxWindow == 1) {
-    // schedule.get(treatmentStartHour).addTask(treatment.getTask().getDescription());
-    // int newTimeRemaining = schedule.get(treatmentStartHour).getTimeRemaining()
-    // - treatment.getTask().getDuration();
-    // schedule.get(treatmentStartHour).updateTimeRemaining(newTimeRemaining);
-    // }
-    // if (treatmentMaxWindow == 2) {
-    // if (schedule.get(treatmentStartHour).getTimeRemaining() <
-    // treatment.getTask().getDuration()) {
-    // schedule.get(treatmentStartHour +
-    // 1).addTask(treatment.getTask().getDescription());
-    // int newTimeRemaining = schedule.get(treatmentStartHour +
-    // 1).getTimeRemaining()
-    // - treatment.getTask().getDuration();
-    // schedule.get(treatmentStartHour + 1).updateTimeRemaining(newTimeRemaining);
-    // } else {
-    // schedule.get(treatmentStartHour).addTask(treatment.getTask().getDescription());
-    // int newTimeRemaining = schedule.get(treatmentStartHour).getTimeRemaining()
-    // - treatment.getTask().getDuration();
-    // schedule.get(treatmentStartHour).updateTimeRemaining(newTimeRemaining);
-    // }
-    // }
-    // }
-    // }
 
     public void addTasksToSchedule() {
         Collections.sort(treatments, Comparator.comparing(Treatment -> Treatment.getTASK().getMAXWINDOW()));
@@ -71,6 +38,42 @@ public class Schedule {
                     break;
                 } else {
                     currentWindow++;
+                }
+            }
+        }
+    }
+
+    public void addFeedingToSchedule() {
+        for (FeedingSchedule feeding : feedings) {
+            int feedingStartHour = feeding.getStartHour();
+            int feedingMaxWindow = feeding.getTimeWindow();
+            int currentWindow = 0;
+            while (currentWindow < feedingMaxWindow) {
+                int currentHour = feedingStartHour + currentWindow;
+                if (schedule.get(currentHour).getTimeRemaining() >= feeding.getDuration()) {
+                    schedule.get(currentHour).addTask(feeding.getDescription() + " " + feeding.getName());
+                    int newTimeRemaining = schedule.get(currentHour).getTimeRemaining()
+                            - feeding.getDuration();
+                    schedule.get(currentHour).updateTimeRemaining(newTimeRemaining);
+                    break;
+                } else {
+                    currentWindow++;
+                }
+            }
+        }
+    }
+
+    public void addCageCleaningToSchedule() {
+        for (CleaningCage cageCleaning : cageCleanings) {
+            int cageCleaningDuration = cageCleaning.getDuration();
+            String cageCleaningDescription = cageCleaning.getDescription();
+
+            for (int i = 0; i < 24; i++) {
+                if (schedule.get(i).getTimeRemaining() >= cageCleaningDuration) {
+                    schedule.get(i).addTask(cageCleaningDescription + " " + cageCleaning.getName());
+                    int newTimeRemaining = schedule.get(i).getTimeRemaining() - cageCleaningDuration;
+                    schedule.get(i).updateTimeRemaining(newTimeRemaining);
+                    break;
                 }
             }
         }

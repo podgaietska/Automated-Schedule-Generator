@@ -25,6 +25,14 @@ public class CleaningCage {
         return species;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description + " for " + species;
+    }
+
     @Override
     public String toString() {
         return "To " + description + " for: " + name + ", Duration: " + duration;

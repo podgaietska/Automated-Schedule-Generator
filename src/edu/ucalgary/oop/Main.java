@@ -81,6 +81,10 @@ public class Main {
 
     schedule.addTasksToSchedule();
 
+    schedule.addCageCleaningToSchedule();
+
+    schedule.addFeedingToSchedule();
+
     HashMap<Integer, ToDo> scheduleMap = schedule.getSchedule();
 
     for (int i = 0; i < 24; i++) {
