@@ -1,9 +1,18 @@
 package edu.ucalgary.oop;
 
 public class CleaningCage {
-    private int duration;
 
-    public CleaningCage(String species) {
+    private String species;
+    private String name;
+    private String description = "clean cage";
+    private int duration;
+    
+    
+
+    public CleaningCage(String name, String species) {
+        this.species = species;
+        this.name = name;
+
         if (species.equals("porcupine"))
             this.duration = 10;
         else
@@ -11,12 +20,16 @@ public class CleaningCage {
     }
 
     public int getDuration() {
-        return this.duration;
+        return duration;
+    }
+
+    public String getSpecies() {
+        return species;
     }
 
     @Override
     public String toString() {
-        return "Cleaning Cage Duration: " + duration;
-    }
-
+        return "To " + description + " for: " + name + ", Duration: " + duration;
+      }
+    
 }

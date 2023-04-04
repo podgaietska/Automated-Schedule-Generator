@@ -24,8 +24,9 @@ public class Animal {
     } else {
       this.type = "diurnal";
     }
-    this.feedingSchedule = new FeedingSchedule(this.species, this.type);
-    this.cleaningCage = new CleaningCage(this.species);
+
+    this.feedingSchedule = new FeedingSchedule(this.name, this.species, this.type);
+    this.cleaningCage = new CleaningCage(this.name, this.species);
   }
 
   public int getId() {
@@ -51,6 +52,7 @@ public class Animal {
   public CleaningCage getCleaningCage() {
     return this.cleaningCage;
   }
+
 
   @Override
   public String toString() {

@@ -2,15 +2,19 @@ package edu.ucalgary.oop;
 
 public class FeedingSchedule {
     private String species;
+    private String name;
+    private String description = "feed";
     private int duration;
     private int startHour;
     private int timeWindow;
     private int prep;
+    
 
-    public FeedingSchedule(String species, String type) {
+    public FeedingSchedule(String name, String species, String type) {
         this.duration = 5;
         this.timeWindow = 3;
         this.species = species;
+        this.name = name;
 
         if (type.equals("crepescular"))
             this.startHour = 19;
@@ -47,8 +51,7 @@ public class FeedingSchedule {
 
     @Override
     public String toString() {
-        return "To feed:" + species + ", Start time: " + startHour + ", Time Window: " + timeWindow + ", Duration: "
-                + duration + ", Prep: " + prep;
-    }
+        return "To " + description + " " + name + ", Start time: " + startHour + ", Time Window: " + timeWindow + ", Duration: " + duration + ", Prep: " + prep;
+      }
 
 }

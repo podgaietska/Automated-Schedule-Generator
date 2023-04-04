@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
+import java.util.*;
 
 public class Main {
   public static void main(String[] args) {
@@ -17,7 +17,7 @@ public class Main {
     ArrayList<Animal> animals = new ArrayList<>();
     ArrayList<Task> tasks = new ArrayList<>();
     ArrayList<Treatment> treatments = new ArrayList<>();
-
+    
     try (Connection connection = DriverManager.getConnection(url, username, password)) {
 
       Statement animalsQuery = connection.createStatement();
@@ -65,9 +65,29 @@ public class Main {
       e.printStackTrace();
     }
 
-    for (Animal animal : animals) {
-      System.out.println(animal.getFeedingSchedule());
+    Schedule schedule = new Schedule();
+
+    schedule.addAnimals(animals);
+
+    for (Animal animal: animals){
+      schedule.addFeeding(animal.getFeedingSchedule());
+      schedule.addCageCleaning(animal.getCleaningCage());
     }
+
+    for (Treatment treatment: treatments){
+      schedule.addTreatment(treatment);
+      System.out.println(treatment);
+    }
+
+    schedule.addTasksToSchedule();
+
+    HashMap<Integer, ToDo> scheduleMap = schedule.getSchedule();
+
+    for (int i = 0; i < 24; i++) {
+      System.out.println("Hour " + i + ": " + scheduleMap.get(i));
+    }
+
+
 
   }
 }
