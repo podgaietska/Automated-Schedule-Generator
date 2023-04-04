@@ -59,32 +59,18 @@ public class Schedule {
         for (Treatment treatment : treatments) {
             int treatmentStartHour = treatment.getStartHour();
             int treatmentMaxWindow = treatment.getTask().getMaxWindow();
-            if (treatmentMaxWindow == 1){
-                schedule.get(treatmentStartHour).addTask(treatment.getTask().getDescription());
-                int newTimeRemaining = schedule.get(treatmentStartHour).getTimeRemaining() - treatment.getTask().getDuration();
-                schedule.get(treatmentStartHour).updateTimeRemaining(newTimeRemaining);
-            }
-            if (treatmentMaxWindow == 2){
-                if (schedule.get(treatmentStartHour).getTimeRemaining() < treatment.getTask().getDuration()){          
-                    schedule.get(treatmentStartHour + 1).addTask(treatment.getTask().getDescription());
-                    int newTimeRemaining = schedule.get(treatmentStartHour + 1).getTimeRemaining() - treatment.getTask().getDuration();
-                    schedule.get(treatmentStartHour + 1).updateTimeRemaining(newTimeRemaining);
-                }
-                else {
-                    schedule.get(treatmentStartHour).addTask(treatment.getTask().getDescription());
-                    int newTimeRemaining = schedule.get(treatmentStartHour).getTimeRemaining() - treatment.getTask().getDuration();
-                    schedule.get(treatmentStartHour).updateTimeRemaining(newTimeRemaining);
-                }
-            } else {
-                if (treatmentMaxWindow > 2 && treatmentMaxWindow < 24) {
-                    int i = treatmentStartHour;
-                    while (i < treatmentMaxWindow && 1 - schedule.get(treatmentStartHour).getTimeRemaining()
-                            - treatment.getTask().getDuration() >= 0) {
-                        schedule.get(i).addTask(treatment.getTask().getDescription());
-                        int newTimeRemaining = schedule.get(i).getTimeRemaining() - treatment.getTask().getDuration();
-                        schedule.get(i).updateTimeRemaining(newTimeRemaining);
-                        i++;
-                    }
+
+            int currentWindow = 0;
+            while (currentWindow < treatmentMaxWindow) {
+                int currentHour = treatmentStartHour + currentWindow;
+                if (schedule.get(currentHour).getTimeRemaining() >= treatment.getTask().getDuration()) {
+                    schedule.get(currentHour).addTask(treatment.getTask().getDescription());
+                    int newTimeRemaining = schedule.get(currentHour).getTimeRemaining()
+                            - treatment.getTask().getDuration();
+                    schedule.get(currentHour).updateTimeRemaining(newTimeRemaining);
+                    break;
+                } else {
+                    currentWindow++;
                 }
             }
         }

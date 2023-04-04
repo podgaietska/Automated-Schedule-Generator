@@ -6,8 +6,6 @@ public class CleaningCage {
     private String name;
     private String description = "clean cage";
     private int duration;
-    
-    
 
     public CleaningCage(String name, String species) {
         this.species = species;
@@ -30,6 +28,6 @@ public class CleaningCage {
     @Override
     public String toString() {
         return "To " + description + " for: " + name + ", Duration: " + duration;
-      }
-    
+    }
+
 }

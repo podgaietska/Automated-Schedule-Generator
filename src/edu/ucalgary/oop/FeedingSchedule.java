@@ -8,7 +8,6 @@ public class FeedingSchedule {
     private int startHour;
     private int timeWindow;
     private int prep;
-    
 
     public FeedingSchedule(String name, String species, String type) {
         this.duration = 5;
@@ -51,7 +50,8 @@ public class FeedingSchedule {
 
     @Override
     public String toString() {
-        return "To " + description + " " + name + ", Start time: " + startHour + ", Time Window: " + timeWindow + ", Duration: " + duration + ", Prep: " + prep;
-      }
+        return "To " + description + " " + name + ", Start time: " + startHour + ", Time Window: " + timeWindow
+                + ", Duration: " + duration + ", Prep: " + prep;
+    }
 
 }
