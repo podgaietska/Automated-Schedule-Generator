@@ -48,10 +48,14 @@ public class Schedule {
             int feedingStartHour = feeding.getStartHour();
             int feedingMaxWindow = feeding.getTimeWindow();
             int currentWindow = 0;
+            System.out.println("Current feeding name: " + feeding.getName());
             while (currentWindow < feedingMaxWindow) {
                 int currentHour = feedingStartHour + currentWindow;
                 if (schedule.get(currentHour).getTimeRemaining() >= feeding.getDuration()) {
-                    schedule.get(currentHour).addTask(feeding.getDescription() + " " + feeding.getName());
+                    if (feeding.getName().equals("Annie, Oliver and Mowgli")) {
+                        System.out.println("feeding.getName() = " + feeding.getName());
+                        schedule.get(currentHour).addTask(feeding.getDescription() + " " + feeding.getName());
+                    }
                     int newTimeRemaining = schedule.get(currentHour).getTimeRemaining()
                             - feeding.getDuration();
                     schedule.get(currentHour).updateTimeRemaining(newTimeRemaining);
