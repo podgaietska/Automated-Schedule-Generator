@@ -5,7 +5,7 @@
 ### Colaborators
 
 - Nicole Izdraila (30147366)
-- Mariia Podgaietska
+- Mariia Podgaietska (30151330)
 - Afrah Mohammad (30144844)
 - Axel Sanchez (30145429)
 

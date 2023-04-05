@@ -85,11 +85,13 @@ public class Main {
 
     schedule.addFeedingToSchedule();
 
-    HashMap<Integer, ToDo> scheduleMap = schedule.getSchedule();
+    schedule.printSchedule();
 
-    for (int i = 0; i < 24; i++) {
-      System.out.println("Hour " + i + ": " + scheduleMap.get(i));
-    }
+    // HashMap<Integer, ToDo> scheduleMap = schedule.getSchedule();
+
+    // for (int i = 0; i < 24; i++) {
+    //   System.out.println("Hour " + i + ": " + scheduleMap.get(i));
+    // }
 
   }
 }

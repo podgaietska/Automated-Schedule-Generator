@@ -50,11 +50,19 @@ public class ToDo {
    * @return task that needs to be completed
    */
     public String getTasks() {
-        String tasks = "";
-        for (String task : toDoList) {
-            tasks += task + ", ";
-        }
-        return tasks;
+        String output = "";
+        if (!toDoList.isEmpty())
+            for (String task: toDoList){
+                output += task + '\n';
+            }
+        else 
+            output = "No tasks to do" + '\n';
+        return output;
+        // String tasks = "";
+        // for (String task : toDoList) {
+        //     tasks += task + '\n';
+        // }
+        // return tasks;
     }
 /**
    * returns a string of the task and the time remaining in that hour
@@ -64,7 +72,7 @@ public class ToDo {
    */
     @Override
     public String toString() {
-        return "Task: " + getTasks() + "Time Remaining: " + timeRemaining;
+        return getTasks();
     }
 
 }
