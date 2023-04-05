@@ -1,5 +1,6 @@
 package edu.ucalgary.oop;
 
+import java.io.*;
 import java.util.*;
 
 public class Schedule {
@@ -152,6 +153,27 @@ public class Schedule {
             sb.append(i).append(":00\n").append(schedule.get(i)).append("\n");
         }
         return sb.toString();
+    }
+
+    public void printScheduleToFile() {
+        FileWriter out = null;
+        String outName = "schedule.txt";
+
+        try {
+            out = new FileWriter(outName);
+            out.write(printSchedule());
+        } catch (IOException e) {
+            System.out.println("Error writing to file " + outName);
+        } finally {
+            if (out != null) {
+                try {
+                    out.close();
+                } catch (IOException e) {
+                    System.out.println("Error closing file " + outName);
+                }
+            }
+        }
+        
     }
 
 }

@@ -89,7 +89,7 @@ public class Main {
 
     schedule.addFeedingToSchedule();
 
-    schedule.printSchedule();
+    schedule.printScheduleToFile();
 
     EventQueue.invokeLater(() -> {
       JFrame frame = new JFrame("Animal Care Schedule");
