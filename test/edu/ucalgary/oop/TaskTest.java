@@ -8,10 +8,10 @@ public class TaskTest {
   public void testTaskConstructorValidInput() {
     Task task = new Task(1, "Fix the door", 30, 60);
 
-    assert task.getId() == 1;
-    assert task.getDescription().equals("Fix the door");
-    assert task.getDuration() == 30;
-    assert task.getMaxWindow() == 60;
+    assert task.getID() == 1;
+    assert task.getDESCRIPTION().equals("Fix the door");
+    assert task.getDURATION() == 30;
+    assert task.getMAXWINDOW() == 60;
   }
 
   @Test

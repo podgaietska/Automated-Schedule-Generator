@@ -19,10 +19,10 @@ public class TreatmentTest {
   public void testValidTreatmentCreation() {
     Treatment treatment = new Treatment(1, testAnimal, testTask, 2);
 
-    assertEquals(1, treatment.getId());
-    assertEquals(testAnimal, treatment.getAnimal());
-    assertEquals(testTask, treatment.getTask());
-    assertEquals(2, treatment.getStartHour());
+    assertEquals(1, treatment.getID());
+    assertEquals(testAnimal, treatment.getANIMAL());
+    assertEquals(testTask, treatment.getTASK());
+    assertEquals(2, treatment.getSTART_HOUR());
   }
 
   @Test(expected = IllegalArgumentException.class)

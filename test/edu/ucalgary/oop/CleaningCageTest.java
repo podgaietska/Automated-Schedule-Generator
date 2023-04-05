@@ -1,30 +1,35 @@
 package edu.ucalgary.oop;
 
 import org.junit.Test;
-
-import static org.junit.Assert.*;
+import org.junit.Assert;
 
 public class CleaningCageTest {
 
   @Test
-  public void testDurationForPorcupine() {
-    CleaningCage cleaningCage = new CleaningCage("porcupine");
-
-    assertEquals(10, cleaningCage.getDuration());
+  public void testCleaningCageConstructor() {
+    CleaningCage cleaningCage = new CleaningCage("Mowgli", "fox");
+    Assert.assertEquals("fox", cleaningCage.getSpecies());
+    Assert.assertEquals("Mowgli", cleaningCage.getName());
+    Assert.assertEquals(5, cleaningCage.getDuration());
+    Assert.assertEquals("clean cage for fox", cleaningCage.getDescription());
   }
 
   @Test
-  public void testDurationForOtherSpecies() {
-    CleaningCage cleaningCage = new CleaningCage("fox");
-
-    assertEquals(5, cleaningCage.getDuration());
+  public void testCleaningCageDurationPorcupine() {
+    CleaningCage cleaningCage = new CleaningCage("Spiky", "porcupine");
+    Assert.assertEquals(10, cleaningCage.getDuration());
   }
 
   @Test
-  public void testToString() {
-    CleaningCage cleaningCage = new CleaningCage("porcupine");
-
-    assertEquals("Cleaning Cage Duration: 10", cleaningCage.toString());
+  public void testCleaningCageDurationOtherSpecies() {
+    CleaningCage cleaningCage = new CleaningCage("Mowgli", "fox");
+    Assert.assertEquals(5, cleaningCage.getDuration());
   }
 
+  @Test
+  public void testCleaningCageToString() {
+    CleaningCage cleaningCage = new CleaningCage("Mowgli", "fox");
+    String expected = "To clean cage for: Mowgli, Duration: 5";
+    Assert.assertEquals(expected, cleaningCage.toString());
+  }
 }
