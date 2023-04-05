@@ -70,6 +70,14 @@ public class Schedule {
         }
     }
 
+    public String getAllNames() {
+        StringBuilder sb = new StringBuilder();        
+        for (FeedingSchedule feeding : feedings) {
+            sb.append(feeding.getName()).append("\n");
+        }
+        return sb.toString();
+    }
+
     public void callBackupVolunteer(FeedingSchedule feeding) {
         System.out.println("Not enough time for feeding: " + feeding.getName() + ". Calling backup volunteer.");
     }
