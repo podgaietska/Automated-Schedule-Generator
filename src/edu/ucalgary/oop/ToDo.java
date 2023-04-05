@@ -17,9 +17,6 @@ public class ToDo {
 
     /**
      * Constructor for the ToDo class
-     * 
-     * @param timeRemaining
-     * @param toDoList
      */
     public ToDo() {
         toDoList = new ArrayList<String>();
@@ -66,11 +63,6 @@ public class ToDo {
         else
             output = "* No tasks to do" + '\n';
         return output;
-        // String tasks = "";
-        // for (String task : toDoList) {
-        // tasks += task + '\n';
-        // }
-        // return tasks;
     }
 
     /**

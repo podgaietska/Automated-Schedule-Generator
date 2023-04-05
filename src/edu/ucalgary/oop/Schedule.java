@@ -3,6 +3,13 @@ package edu.ucalgary.oop;
 import java.io.*;
 import java.util.*;
 
+/**
+ * The Schedule class is used to organize the tasks/feedings/etc. of
+ * each animal into a generated, readable schedule, for this project.
+ * 
+ * @author Nicole Izdraila, Mariia Podgaietska, Afrah Mohammad, Axel Sanchez
+ * @since 2023-03-23
+ */
 public class Schedule {
     private HashMap<Integer, ToDo> schedule = new HashMap<Integer, ToDo>();
     private ArrayList<FeedingSchedule> feedings = new ArrayList<FeedingSchedule>();
@@ -10,6 +17,9 @@ public class Schedule {
     private ArrayList<Treatment> treatments = new ArrayList<Treatment>();;
     private HashMap<String, Integer> animalCount = new HashMap<>();
 
+    /**
+     * constructor for Schedule class
+     */
     public Schedule() {
         animalCount.put("coyote", 0);
         animalCount.put("porcupine", 0);
@@ -22,6 +32,10 @@ public class Schedule {
         }
     }
 
+    /**
+     * adds corresponding tasks to the schedule, and calculates the time
+     * respective to the tasks added
+     */
     public void addTasksToSchedule() {
         Collections.sort(treatments, Comparator.comparing(Treatment -> Treatment.getTASK().getMAXWINDOW()));
 
@@ -46,6 +60,10 @@ public class Schedule {
         }
     }
 
+    /**
+     * adds corresponding feeding times to the schedule, and
+     * calculates the time respective to the feeding times that are added
+     */
     public void addFeedingToSchedule() {
         for (FeedingSchedule feeding : feedings) {
             int feedingStartHour = feeding.getStartHour();
@@ -71,6 +89,12 @@ public class Schedule {
         }
     }
 
+    /**
+     * retrieves all the names (nicknames) of the animals currently at
+     * the shelter, returns it as a String
+     * 
+     * @return String of all animal names
+     */
     public String getAllNames() {
         StringBuilder sb = new StringBuilder();
         for (Treatment treatment : treatments) {
@@ -80,10 +104,20 @@ public class Schedule {
         return sb.toString();
     }
 
+    /**
+     * String output for if a backup volunteer is needed depending on the feeding
+     * times, when time exceeds the hour, then a backup volunteer is called.
+     * 
+     * @param feeding
+     */
     public void callBackupVolunteer(FeedingSchedule feeding) {
         System.out.println("Not enough time for feeding: " + feeding.getName() + ". Calling backup volunteer.");
     }
 
+    /**
+     * adds the cage cleaning task to the schedule, and calculates the
+     * corresponding time after the cleaning is done.
+     */
     public void addCageCleaningToSchedule() {
         for (CleaningCage cageCleaning : cageCleanings) {
             int cageCleaningDuration = cageCleaning.getDuration();
@@ -100,6 +134,11 @@ public class Schedule {
         }
     }
 
+    /**
+     * adds animals to the ArrayList<Animal>, based on the type of species they are
+     * 
+     * @param animals
+     */
     public void addAnimals(ArrayList<Animal> animals) {
         for (Animal animal : animals) {
             if (animal.getSPECIES().equals("porcupine")) {
@@ -116,38 +155,85 @@ public class Schedule {
         }
     }
 
+    /**
+     * adds feeding tasks based on the FeedingSchedule object
+     * 
+     * @param feeding
+     */
     public void addFeeding(FeedingSchedule feeding) {
         feedings.add(feeding);
     }
 
+    /**
+     * adds the cage cleaning tasks based on the CleaningCage object
+     * 
+     * @param cageCleaning
+     */
     public void addCageCleaning(CleaningCage cageCleaning) {
         cageCleanings.add(cageCleaning);
     }
 
+    /**
+     * adds the treatment tasks based on the Treatment object
+     * 
+     * @param treatment
+     */
     public void addTreatment(Treatment treatment) {
         treatments.add(treatment);
     }
 
+    /**
+     * a getter for recieving the treatments
+     * 
+     * @return ArrayList<Treatment> treatments
+     */
     public ArrayList<Treatment> getTreatment() {
         return treatments;
     }
 
+    /**
+     * a getter for recieving the feeding tasks
+     * 
+     * @return ArrayList<FeedingSchedule> feedings
+     */
     public ArrayList<FeedingSchedule> getFeeding() {
         return feedings;
     }
 
+    /**
+     * a getter for recieving the cage cleaning tasks
+     * 
+     * @return ArrayList<CleaningCage> cageCleanings
+     */
     public ArrayList<CleaningCage> getCageCleaning() {
         return cageCleanings;
     }
 
+    /**
+     * a getter for recieving the number of animals
+     * 
+     * @return HashMap<String, Integer> animalCount
+     */
     public HashMap<String, Integer> getAnimalCount() {
         return animalCount;
     }
 
+    /**
+     * a getter for recieving the final schedule
+     * 
+     * @return HashMap<Integer, ToDo> schedule
+     */
     public HashMap<Integer, ToDo> getSchedule() {
         return schedule;
     }
 
+    /**
+     * prints the schedule to the made GUI in the Main class, with the
+     * corresponding times (00:00 to 23:00), and the respective tasks associated
+     * with the times
+     * 
+     * @return String representation of the schedule
+     */
     public String printSchedule() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < 24; i++) {
@@ -156,6 +242,10 @@ public class Schedule {
         return sb.toString();
     }
 
+    /**
+     * outputs the final schedule to a .txt file for the user to retrieve
+     * with the GUI implemented in the Main class
+     */
     public void printScheduleToFile() {
         FileWriter out = null;
         String outName = "schedule.txt";
@@ -174,7 +264,5 @@ public class Schedule {
                 }
             }
         }
-
     }
-
 }
