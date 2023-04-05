@@ -1,4 +1,5 @@
 package edu.ucalgary.oop;
+
 import java.util.regex.*;
 
 /**
@@ -49,7 +50,7 @@ public class Animal {
     Pattern pattern = Pattern.compile("^[a-zA-Z]+$");
     Matcher matcher = pattern.matcher(this.NAME);
 
-    if (matcher.find()){
+    if (matcher.find()) {
       this.feedingSchedule = new FeedingSchedule(this.NAME, this.SPECIES, this.TYPE);
     }
     this.cleaningCage = new CleaningCage(this.NAME, this.SPECIES);
@@ -69,7 +70,7 @@ public class Animal {
    * 
    * @return NAME of animal
    */
-  public String getNAME() {
+  public static String getNAME() {
     return this.NAME;
   }
 
@@ -120,4 +121,5 @@ public class Animal {
   public String toString() {
     return "ID: " + ID + ", Name: " + NAME + ", Species: " + SPECIES + ", Type: " + TYPE;
   }
+
 }
