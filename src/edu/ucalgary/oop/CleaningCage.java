@@ -4,7 +4,7 @@ public class CleaningCage {
 
     private String species;
     private String name;
-    private String description = "clean cage";
+    private String description = "Clean cage";
     private int duration;
 
     public CleaningCage(String name, String species) {

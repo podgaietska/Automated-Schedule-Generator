@@ -16,11 +16,7 @@ public class Main {
 
     String url = "jdbc:mysql://localhost:3306/EWR";
     String username = "root";
-<<<<<<< HEAD
-    String password = "Barcelona15"; // Enter your personal password
-=======
     String password = "sea100403"; // Enter your personal password
->>>>>>> c4c43906385cb90bee6ac460370d68a7700b7b21
 
     ArrayList<Animal> animals = new ArrayList<>();
     ArrayList<Task> tasks = new ArrayList<>();

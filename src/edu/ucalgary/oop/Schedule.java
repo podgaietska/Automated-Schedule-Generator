@@ -32,7 +32,7 @@ public class Schedule {
             while (currentWindow < treatmentMaxWindow) {
                 int currentHour = treatmentStartHour + currentWindow;
                 if (schedule.get(currentHour).getTimeRemaining() >= treatment.getTASK().getDURATION()) {
-                    schedule.get(currentHour).addTask(treatment.getTASK().getDESCRIPTION());
+                    schedule.get(currentHour).addTask(treatment.getTASK().getDESCRIPTION() + " (" + treatment.getANIMAL().getNAME() + ")");
                     int newTimeRemaining = schedule.get(currentHour).getTimeRemaining()
                             - treatment.getTASK().getDURATION();
                     schedule.get(currentHour).updateTimeRemaining(newTimeRemaining);
