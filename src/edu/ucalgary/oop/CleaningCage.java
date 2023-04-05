@@ -1,4 +1,12 @@
 package edu.ucalgary.oop;
+/**
+ * The Treatment class is used for this project. It takes in
+ * an animal Id, the Animal object, the Task object and the start hour for the
+ * respective treatment being done per. animal.
+ * 
+ * @author Group 4
+ * @since 2023-03-23
+ */
 
 public class CleaningCage {
 

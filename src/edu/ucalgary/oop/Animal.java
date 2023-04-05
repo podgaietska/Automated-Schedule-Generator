@@ -70,7 +70,7 @@ public class Animal {
    * 
    * @return NAME of animal
    */
-  public static String getNAME() {
+  public String getNAME() {
     return this.NAME;
   }
 
