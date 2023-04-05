@@ -114,7 +114,7 @@ public class Main {
           textArea.setText(scheduleString); // set the text area to display the schedule string
         }
       });
-      panel.add(scheduleButton, BorderLayout.SOUTH);
+      panel.add(scheduleButton, BorderLayout.NORTH); // change SOUTH to NORTH
       frame.add(panel);
       frame.setVisible(true);
     });
