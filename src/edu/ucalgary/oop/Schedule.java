@@ -33,7 +33,8 @@ public class Schedule {
             while (currentWindow < treatmentMaxWindow) {
                 int currentHour = treatmentStartHour + currentWindow;
                 if (schedule.get(currentHour).getTimeRemaining() >= treatment.getTASK().getDURATION()) {
-                    schedule.get(currentHour).addTask(treatment.getTASK().getDESCRIPTION() + " (" + treatment.getANIMAL().getNAME() + ")");
+                    schedule.get(currentHour).addTask(
+                            treatment.getTASK().getDESCRIPTION() + " (" + treatment.getANIMAL().getNAME() + ")");
                     int newTimeRemaining = schedule.get(currentHour).getTimeRemaining()
                             - treatment.getTASK().getDURATION();
                     schedule.get(currentHour).updateTimeRemaining(newTimeRemaining);
@@ -71,7 +72,7 @@ public class Schedule {
     }
 
     public String getAllNames() {
-        StringBuilder sb = new StringBuilder();        
+        StringBuilder sb = new StringBuilder();
         for (Treatment treatment : treatments) {
             if (!sb.toString().contains(treatment.getANIMAL().getNAME()))
                 sb.append(treatment.getANIMAL().getNAME()).append("\n");
@@ -173,7 +174,7 @@ public class Schedule {
                 }
             }
         }
-        
+
     }
 
 }

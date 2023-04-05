@@ -8,7 +8,7 @@ import java.util.regex.*;
  * crepescular, diurnal),
  * feeding schedule object and cage cleaning object.
  * 
- * @author Group 4
+ * @author Nicole Izdraila, Mariia Podgaietska, Afrah Mohammad, Axel Sanchez
  * @since 2023-03-23
  */
 public class Animal {

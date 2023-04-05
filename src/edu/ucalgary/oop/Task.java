@@ -1,9 +1,11 @@
 package edu.ucalgary.oop;
+
 /**
  * The Task class is used for the Main Java file. It takes in
- * a task Id, the task description, the duration and the max window that the 
+ * a task Id, the task description, the duration and the max window that the
  * tasks must be completed in.
- * @author Group 4
+ * 
+ * @author Nicole Izdraila, Mariia Podgaietska, Afrah Mohammad, Axel Sanchez
  * @since 2023-03-23
  */
 public class Task {
@@ -11,7 +13,8 @@ public class Task {
   private final String DESCRIPTION;
   private final int DURATION;
   private final int MAXWINDOW;
-/**
+
+  /**
    * Constructor for the Task class
    * 
    * @param ID
@@ -30,7 +33,8 @@ public class Task {
     this.DURATION = DURATION;
     this.MAXWINDOW = MAXWINDOW;
   }
-/**
+
+  /**
    * returns the ID of the task
    * 
    * @return ID of task
@@ -38,7 +42,8 @@ public class Task {
   public int getID() {
     return ID;
   }
-/**
+
+  /**
    * returns the description of task
    * 
    * @return the description of task
@@ -46,7 +51,8 @@ public class Task {
   public String getDESCRIPTION() {
     return DESCRIPTION;
   }
-/**
+
+  /**
    * returns the duration of task
    * 
    * @return ID of animal
@@ -54,7 +60,8 @@ public class Task {
   public int getDURATION() {
     return DURATION;
   }
-/**
+
+  /**
    * returns the max window that the task must be completed
    * 
    * @return maxwindow of task
@@ -62,7 +69,8 @@ public class Task {
   public int getMAXWINDOW() {
     return MAXWINDOW;
   }
-/**
+
+  /**
    * returns a string of the task ID, task description,
    * task duration, and max window
    * 

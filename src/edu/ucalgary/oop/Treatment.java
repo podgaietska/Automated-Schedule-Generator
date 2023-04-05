@@ -5,10 +5,9 @@ package edu.ucalgary.oop;
  * an animal Id, the Animal object, the Task object and the start hour for the
  * respective treatment being done per. animal.
  * 
- * @author Group 4
+ * @author Nicole Izdraila, Mariia Podgaietska, Afrah Mohammad, Axel Sanchez
  * @since 2023-03-23
  */
-
 public class Treatment {
   private final int ID;
   private final Animal ANIMAL;
