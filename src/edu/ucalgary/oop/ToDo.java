@@ -53,10 +53,10 @@ public class ToDo {
         String output = "";
         if (!toDoList.isEmpty())
             for (String task: toDoList){
-                output += task + '\n';
+                output += "* " + task + '\n';
             }
         else 
-            output = "No tasks to do" + '\n';
+            output = "* No tasks to do" + '\n';
         return output;
         // String tasks = "";
         // for (String task : toDoList) {

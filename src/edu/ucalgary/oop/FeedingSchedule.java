@@ -3,7 +3,7 @@ package edu.ucalgary.oop;
 public class FeedingSchedule {
     private String species;
     private String name;
-    private String description = "feed";
+    private String description = "Feed";
     private int duration;
     private int startHour;
     private int timeWindow;
