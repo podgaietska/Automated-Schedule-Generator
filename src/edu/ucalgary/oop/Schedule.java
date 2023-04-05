@@ -15,6 +15,7 @@ public class Schedule {
         animalCount.put("fox", 0);
         animalCount.put("raccoon", 0);
         animalCount.put("beaver", 0);
+        
         for (int i = 0; i < 24; i++) {
             schedule.put(i, new ToDo());
         }
@@ -125,5 +126,12 @@ public class Schedule {
 
     public HashMap<Integer, ToDo> getSchedule() {
         return schedule;
+    }
+
+    public void printSchedule() {
+        for (int i = 0; i < 24; i++) {
+            String output = i + ":00" + '\n' + schedule.get(i);
+            System.out.println(output);
+        }
     }
 }

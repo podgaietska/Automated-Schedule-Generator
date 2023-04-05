@@ -23,16 +23,24 @@ public class ToDo {
     }
 
     public String getTasks() {
-        String tasks = "";
-        for (String task : toDoList) {
-            tasks += task + ", ";
-        }
-        return tasks;
+        String output = "";
+        if (!toDoList.isEmpty())
+            for (String task: toDoList){
+                output += task + '\n';
+            }
+        else 
+            output = "No tasks to do" + '\n';
+        return output;
+        // String tasks = "";
+        // for (String task : toDoList) {
+        //     tasks += task + '\n';
+        // }
+        // return tasks;
     }
 
     @Override
     public String toString() {
-        return "Task: " + getTasks() + "Time Remaining: " + timeRemaining;
+        return getTasks();
     }
 
 }
