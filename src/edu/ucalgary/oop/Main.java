@@ -11,6 +11,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
+import javax.swing.border.Border;
 
 public class Main {
   public static void main(String[] args) {
@@ -97,8 +98,15 @@ public class Main {
       frame.setSize(800, 600);
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-      JPanel panel = new JPanel();
-      panel.setLayout(new BorderLayout());
+      JLabel title = new JLabel("Welcome to the Animal Wildlife Rescue Centre Database!", SwingConstants.CENTER);
+      JLabel instruction = new JLabel("What would you like to do?", SwingConstants.CENTER);
+
+      JPanel panel = new JPanel(new BorderLayout());
+
+      JPanel topPanel = new JPanel(new GridLayout(2, 1));
+      topPanel.add(title);
+      topPanel.add(instruction);
+      panel.add(topPanel, BorderLayout.NORTH);
 
       JTextArea textArea = new JTextArea();
       textArea.setEditable(false);
@@ -114,10 +122,26 @@ public class Main {
           textArea.setText(scheduleString); // set the text area to display the schedule string
         }
       });
-      panel.add(scheduleButton, BorderLayout.SOUTH);
+
+      JButton listAnimalsButton = new JButton("List Animals in Shelter");
+      listAnimalsButton.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+          // List the animals in the shelter and display them in the text area
+          //String animalListString = schedule.listAnimals(); // get the string representation of the animal list
+          textArea.setText("test"); // set the text area to display the animal list string
+        }
+      });
+
+      JPanel buttonPanel = new JPanel(new FlowLayout());
+      buttonPanel.add(scheduleButton);
+      buttonPanel.add(listAnimalsButton);
+      panel.add(buttonPanel, BorderLayout.SOUTH);
+
       frame.add(panel);
       frame.setVisible(true);
     });
+
   }
 }
 
