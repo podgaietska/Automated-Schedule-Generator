@@ -11,13 +11,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
 public class Main {
   public static void main(String[] args) {
 
     String url = "jdbc:mysql://localhost:3306/EWR";
-    String username = "root";
-    String password = "Barcelona15"; // Enter your personal password
+    String username = "oop";
+    String password = "password"; // Enter your personal password
 
     ArrayList<Animal> animals = new ArrayList<>();
     ArrayList<Task> tasks = new ArrayList<>();
@@ -127,8 +126,8 @@ public class Main {
         @Override
         public void actionPerformed(ActionEvent e) {
           // List the animals in the shelter and display them in the text area
-          //String animalListString = schedule.listAnimals(); // get the string representation of the animal list
-          textArea.setText("test"); // set the text area to display the animal list string
+          String animalListString = schedule.getAllNames(); // get the string representation of the animal list
+          textArea.setText(animalListString); // set the text area to display the animal list string
         }
       });
 
@@ -143,4 +142,3 @@ public class Main {
 
   }
 }
-
