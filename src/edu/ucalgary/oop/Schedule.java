@@ -15,7 +15,7 @@ public class Schedule {
         animalCount.put("fox", 0);
         animalCount.put("raccoon", 0);
         animalCount.put("beaver", 0);
-        
+
         for (int i = 0; i < 24; i++) {
             schedule.put(i, new ToDo());
         }
@@ -138,10 +138,12 @@ public class Schedule {
         return schedule;
     }
 
-    public void printSchedule() {
+    public String printSchedule() {
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < 24; i++) {
-            String output = i + ":00" + '\n' + schedule.get(i);
-            System.out.println(output);
+            sb.append(i).append(":00\n").append(schedule.get(i)).append("\n");
         }
+        return sb.toString();
     }
+
 }

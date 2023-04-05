@@ -8,6 +8,9 @@ import java.sql.Statement;
 import java.util.*;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 public class Main {
   public static void main(String[] args) {
@@ -89,24 +92,37 @@ public class Main {
 
     schedule.printSchedule();
 
-    // HashMap<Integer, ToDo> scheduleMap = schedule.getSchedule();
-
-    // for (int i = 0; i < 24; i++) {
-    // System.out.println("Hour " + i + ": " + scheduleMap.get(i));
-    // }
     EventQueue.invokeLater(() -> {
-      JFrame frame = new JFrame("My First Frame");
-      frame.setSize(400, 400);
+      JFrame frame = new JFrame("Animal Care Schedule");
+      frame.setSize(800, 600);
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-  
-      JPanel buttonsPanel = new JPanel();
-      JButton myButton = new JButton("Click here!");
-      buttonsPanel.add(myButton);
-      frame.getContentPane().add(BorderLayout.NORTH, buttonsPanel);
+
+      JPanel panel = new JPanel();
+      panel.setLayout(new BorderLayout());
+
+      JTextArea textArea = new JTextArea();
+      textArea.setEditable(false);
+      JScrollPane scrollPane = new JScrollPane(textArea);
+      panel.add(scrollPane, BorderLayout.CENTER);
+
+      JButton scheduleButton = new JButton("Generate Schedule");
+      scheduleButton.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+          // Generate the schedule and display it in the text area
+          String scheduleString = schedule.printSchedule(); // get the string representation of the schedule
+          textArea.setText(scheduleString); // set the text area to display the schedule string
+        }
+      });
+      panel.add(scheduleButton, BorderLayout.SOUTH);
+      frame.add(panel);
       frame.setVisible(true);
     });
-
   }
-  
- 
 }
+
+// HashMap<Integer, ToDo> scheduleMap = schedule.getSchedule();
+
+// for (int i = 0; i < 24; i++) {
+// System.out.println("Hour " + i + ": " + scheduleMap.get(i));
+// }
