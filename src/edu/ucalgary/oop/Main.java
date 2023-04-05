@@ -11,7 +11,29 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * This is the main class for the Wildlife Rescue Centre application.
+ * It contains the entry point for the program and initializes
+ * the necessary objects to run the application.
+ * 
+ * To run this file, please go to the README.md file given in the GitHub repository,
+ * where it gives the necessary commands to compile and run this program depending on the 
+ * operating system you're on
+ * 
+ * @author Nicole Izdraila, Mariia Podgaietska, Afrah Mohammad, Axel Sanchez
+ * @since 2023-03-23
+ */
+
 public class Main {
+  /**
+   * The main method for the Wildlife Rescue Centre program. Returns a GUI interface for
+   * users to interact with, where they can see the overall generated schedule and the
+   * list of animal (nicknames) that are currently present in the given SQL database
+   * file.
+   *
+   * @param args The command-line arguments for the program. The program requires
+   *             a single argument, which is the path to the configuration file.
+   */
   public static void main(String[] args) {
 
     String url = "jdbc:mysql://localhost:3306/EWR";
