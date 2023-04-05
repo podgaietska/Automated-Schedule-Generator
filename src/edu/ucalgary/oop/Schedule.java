@@ -53,7 +53,6 @@ public class Schedule {
             while (currentWindow < feedingMaxWindow) {
                 int currentHour = feedingStartHour + currentWindow;
                 if (schedule.get(currentHour).getTimeRemaining() >= feeding.getDuration()) {
-                    System.out.println("feeding.getName() = " + feeding.getName());
                     schedule.get(currentHour).addTask(feeding.getDescription() + " " + feeding.getName());
                     int newTimeRemaining = schedule.get(currentHour).getTimeRemaining()
                             - feeding.getDuration();
@@ -72,8 +71,9 @@ public class Schedule {
 
     public String getAllNames() {
         StringBuilder sb = new StringBuilder();        
-        for (FeedingSchedule feeding : feedings) {
-            sb.append(feeding.getName()).append("\n");
+        for (Treatment treatment : treatments) {
+            if (!sb.toString().contains(treatment.getANIMAL().getNAME()))
+                sb.append(treatment.getANIMAL().getNAME()).append("\n");
         }
         return sb.toString();
     }
