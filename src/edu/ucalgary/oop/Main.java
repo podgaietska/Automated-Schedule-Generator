@@ -6,13 +6,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.*;
+import javax.swing.*;
+import java.awt.*;
 
 public class Main {
   public static void main(String[] args) {
 
     String url = "jdbc:mysql://localhost:3306/EWR";
     String username = "root";
-    String password = "AxOmSaPe15092002"; // Enter your personal password
+    String password = "Barcelona15"; // Enter your personal password
 
     ArrayList<Animal> animals = new ArrayList<>();
     ArrayList<Task> tasks = new ArrayList<>();
@@ -90,8 +92,21 @@ public class Main {
     // HashMap<Integer, ToDo> scheduleMap = schedule.getSchedule();
 
     // for (int i = 0; i < 24; i++) {
-    //   System.out.println("Hour " + i + ": " + scheduleMap.get(i));
+    // System.out.println("Hour " + i + ": " + scheduleMap.get(i));
     // }
+    EventQueue.invokeLater(() -> {
+      JFrame frame = new JFrame("My First Frame");
+      frame.setSize(400, 400);
+      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+  
+      JPanel buttonsPanel = new JPanel();
+      JButton myButton = new JButton("Click here!");
+      buttonsPanel.add(myButton);
+      frame.getContentPane().add(BorderLayout.NORTH, buttonsPanel);
+      frame.setVisible(true);
+    });
 
   }
+  
+ 
 }
