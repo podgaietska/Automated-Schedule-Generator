@@ -1,48 +1,65 @@
 package edu.ucalgary.oop;
 
 import org.junit.Test;
-import org.junit.Assert;
+import static org.junit.Assert.*;
 
-/*
- * @author Nicole Izdraila, Mariia Podgaietska, Afrah Mohammad, Axel Sanchez
- * @since 2023-03-23
- */
 public class FeedingScheduleTest {
 
   @Test
-  public void testFeedingScheduleConstructor() {
-    FeedingSchedule feedingSchedule = new FeedingSchedule("Oliver", "fox", "nocturnal");
-    Assert.assertEquals("fox", feedingSchedule.getSpecies());
-    Assert.assertEquals("Oliver", feedingSchedule.getName());
-    Assert.assertEquals(5, feedingSchedule.getDuration());
-    Assert.assertEquals(0, feedingSchedule.getStartHour());
-    Assert.assertEquals(3, feedingSchedule.getTimeWindow());
-    Assert.assertEquals(0, feedingSchedule.getPrep());
-    Assert.assertEquals("feed fox", feedingSchedule.getDescription());
+  public void testGetSpecies() {
+    FeedingSchedule schedule = new FeedingSchedule("Buddy", "porcupine", "crepescular");
+    assertEquals("porcupine", schedule.getSpecies());
   }
 
   @Test
-  public void testFeedingScheduleDifferentTypes() {
-    FeedingSchedule crepescularFeeding = new FeedingSchedule("Spiky", "porcupine", "crepescular");
-    Assert.assertEquals(19, crepescularFeeding.getStartHour());
-
-    FeedingSchedule diurnalFeeding = new FeedingSchedule("Beavy", "beaver", "diurnal");
-    Assert.assertEquals(8, diurnalFeeding.getStartHour());
+  public void testGetName() {
+    FeedingSchedule schedule = new FeedingSchedule("Buddy", "porcupine", "crepescular");
+    assertEquals("Buddy", schedule.getName());
   }
 
   @Test
-  public void testFeedingSchedulePrepTime() {
-    FeedingSchedule coyoteFeeding = new FeedingSchedule("Wiley", "coyote", "crepescular");
-    Assert.assertEquals(10, coyoteFeeding.getPrep());
-
-    FeedingSchedule foxFeeding = new FeedingSchedule("Oliver", "fox", "nocturnal");
-    Assert.assertEquals(0, foxFeeding.getPrep());
+  public void testGetDescription() {
+    FeedingSchedule schedule = new FeedingSchedule("Buddy", "porcupine", "crepescular");
+    assertEquals("Feed porcupine", schedule.getDescription());
   }
 
   @Test
-  public void testFeedingScheduleToString() {
-    FeedingSchedule feedingSchedule = new FeedingSchedule("Oliver", "fox", "nocturnal");
-    String expected = "To feed Oliver, Start time: 0, Time Window: 3, Duration: 5, Prep: 0";
-    Assert.assertEquals(expected, feedingSchedule.toString());
+  public void testGetDuration() {
+    FeedingSchedule schedule = new FeedingSchedule("Buddy", "porcupine", "crepescular");
+    assertEquals(5, schedule.getDuration());
+  }
+
+  @Test
+  public void testGetStartHour() {
+    FeedingSchedule schedule1 = new FeedingSchedule("Buddy", "porcupine", "crepescular");
+    FeedingSchedule schedule2 = new FeedingSchedule("Max", "dog", "nocturnal");
+    FeedingSchedule schedule3 = new FeedingSchedule("Charlie", "cat", "diurnal");
+
+    assertEquals(19, schedule1.getStartHour());
+    assertEquals(0, schedule2.getStartHour());
+    assertEquals(8, schedule3.getStartHour());
+  }
+
+  @Test
+  public void testGetTimeWindow() {
+    FeedingSchedule schedule = new FeedingSchedule("Buddy", "porcupine", "crepescular");
+    assertEquals(3, schedule.getTimeWindow());
+  }
+
+  @Test
+  public void testGetPrep() {
+    FeedingSchedule schedule1 = new FeedingSchedule("Buddy", "porcupine", "crepescular");
+    FeedingSchedule schedule2 = new FeedingSchedule("Max", "coyote", "nocturnal");
+    FeedingSchedule schedule3 = new FeedingSchedule("Charlie", "cat", "diurnal");
+
+    assertEquals(0, schedule1.getPrep());
+    assertEquals(10, schedule2.getPrep());
+    assertEquals(0, schedule3.getPrep());
+  }
+
+  @Test
+  public void testToString() {
+    FeedingSchedule schedule = new FeedingSchedule("Buddy", "porcupine", "crepescular");
+    assertEquals("To Feed Buddy, Start time: 19, Time Window: 3, Duration: 5, Prep: 0", schedule.toString());
   }
 }
