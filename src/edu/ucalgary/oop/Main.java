@@ -10,6 +10,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 /**
  * This is the main class for the Wildlife Rescue Centre application.
@@ -185,11 +186,19 @@ buttonPanel.add(editButton);
 
 JButton saveToFileButton = new JButton("Save Schedule to File");
 saveToFileButton.addActionListener(new ActionListener() {
-  @Override
-  public void actionPerformed(ActionEvent e) {
-    schedule.printScheduleToFile();
-    JOptionPane.showMessageDialog(frame, "Schedule has been saved to a file.");
-  }
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        // Prompt the user to choose a file to save the schedule to
+        JFileChooser fileChooser = new JFileChooser();
+        int option = fileChooser.showSaveDialog(frame);
+        if (option == JFileChooser.APPROVE_OPTION) {
+            // Get the selected file and pass its path to printScheduleToFile()
+            File file = fileChooser.getSelectedFile();
+            String fileName = file.getAbsolutePath();
+            schedule.printScheduleToFile(fileName);
+            JOptionPane.showMessageDialog(frame, "Schedule has been saved to file:\n" + fileName);
+        }
+    }
 });
 buttonPanel.add(saveToFileButton);
 

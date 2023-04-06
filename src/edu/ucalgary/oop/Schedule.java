@@ -286,9 +286,8 @@ public class Schedule {
      * outputs the final schedule to a .txt file for the user to retrieve
      * with the GUI implemented in the Main class
      */
-    public void printScheduleToFile() {
+    public void printScheduleToFile(String outName) {
         FileWriter out = null;
-        String outName = "schedule.txt";
         System.out.println("Attempting to write to file " + outName);
         try {
             out = new FileWriter(outName);
@@ -304,6 +303,5 @@ public class Schedule {
                 }
             }
         }
-        
     }
 }
