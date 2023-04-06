@@ -279,7 +279,8 @@ public class Schedule {
                 sb.append(i).append(":00\n").append(schedule.get(i)).append("\n");
         }
         return sb.toString();
-    }
+    }   
+      
 
     /**
      * outputs the final schedule to a .txt file for the user to retrieve
@@ -288,7 +289,7 @@ public class Schedule {
     public void printScheduleToFile() {
         FileWriter out = null;
         String outName = "schedule.txt";
-
+        System.out.println("Attempting to write to file " + outName);
         try {
             out = new FileWriter(outName);
             out.write(printSchedule());

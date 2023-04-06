@@ -1,26 +1,26 @@
 0:00
 * Kit feeding (Annie, Oliver and Mowgli)
+* Feed fox Slinky
 * Clean cage for coyote Loner
 * Clean cage for coyote Biter
 * Clean cage for coyote Bitter
 * Clean cage for coyote Pencil
 * Clean cage for coyote Eraser
-* Clean cage for fox Annie, Oliver and Mowgli
 
 1:00
+* Clean cage for fox Annie, Oliver and Mowgli
 * Clean cage for fox Slinky
 * Clean cage for porcupine Spike
 * Clean cage for porcupine Javelin
 * Clean cage for porcupine Gatekeeper
 * Clean cage for porcupine Sunshine
 * Clean cage for porcupine Shadow
-* Clean cage for coyote Boots
 
 2:00
 * Kit feeding (Annie, Oliver and Mowgli)
+* Clean cage for coyote Boots
 * Clean cage for coyote Spin
 * Clean cage for coyote Spot
-* Feed fox Slinky
 
 3:00
 * No tasks to do
@@ -32,9 +32,9 @@
 * No tasks to do
 
 6:00
+* Kit feeding (Annie, Oliver and Mowgli)
 * Flush neck wound (Spike)
 * Administer antibiotics (Spike)
-* Kit feeding (Annie, Oliver and Mowgli)
 
 7:00
 * No tasks to do
@@ -55,17 +55,17 @@
 * Kit feeding (Annie, Oliver and Mowgli)
 
 13:00
-* Eyedrops (Biter)
 * Inspect broken leg (Biter)
-* Inspect broken leg (Spin)
-* Mange treatment (Spin)
+* Eyedrops (Biter)
 * Give vitamin injection (Bitter)
 * Give vitamin injection (Pencil)
+* Give vitamin injection (Eraser)
+* Inspect broken leg (Spin)
 
 14:00
 * Kit feeding (Annie, Oliver and Mowgli)
+* Mange treatment (Spin)
 * Mange treatment (Spot)
-* Give vitamin injection (Eraser)
 
 15:00
 * Apply burn ointment back (Shadow)
@@ -77,8 +77,8 @@
 * No tasks to do
 
 18:00
-* Administer antibiotics (Spike)
 * Kit feeding (Annie, Oliver and Mowgli)
+* Administer antibiotics (Spike)
 
 19:00
 * Rebandage leg wound (Slinky)
@@ -88,27 +88,26 @@
 * Feed coyote Pencil
 * Feed coyote Eraser
 * Feed porcupine Spike
-* Feed porcupine Javelin
-* Feed porcupine Gatekeeper
 
 20:00
 * Kit feeding (Annie, Oliver and Mowgli)
+* Feed porcupine Javelin
+* Feed porcupine Gatekeeper
 * Feed porcupine Sunshine
 * Feed porcupine Shadow
 * Feed coyote Boots
 * Feed coyote Spin
-* Feed coyote Spot
 
 21:00
-* No tasks to do
+* Feed coyote Spot
 
-22:00
+22:00 (Backup Volunteer needed)
+* Kit feeding (Annie, Oliver and Mowgli)
 * Eyedrops (Loner)
 * Eyedrops (Javelin)
 * Give fluid injection (Boots)
 
 23:00
-* Kit feeding (Annie, Oliver and Mowgli)
-* Mange treatment (Sunshine)
 * Give vitamin injection (Gatekeeper)
+* Mange treatment (Sunshine)
 
