@@ -136,73 +136,51 @@ public class Main {
       panel.add(scrollPane, BorderLayout.CENTER);
 
       JButton scheduleButton = new JButton("Generate Schedule");
-scheduleButton.addActionListener(new ActionListener() {
-  @Override
-  public void actionPerformed(ActionEvent e) {
-    // Generate the schedule and display it in the text area
-    String scheduleString = schedule.printSchedule(); // get the string representation of the schedule
-    textArea.setText(scheduleString); // set the text area to display the schedule string
-  }
-});
+      scheduleButton.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+          String scheduleString = schedule.printSchedule();
+          textArea.setText(scheduleString);
+        }
+      });
 
-// JButton listAnimalsButton = new JButton("List Animals in Shelter");
-// listAnimalsButton.addActionListener(new ActionListener() {
-//   @Override
-//   public void actionPerformed(ActionEvent e) {
-//     // List the animals in the shelter and display them in the text area
-//     String animalListString = schedule.getAllNames(); // get the string representation of the animal list
-//     textArea.setText(animalListString); // set the text area to display the animal list string
-//   }
-// });
+      JPanel buttonPanel = new JPanel();
+      buttonPanel.setLayout(new FlowLayout());
+      buttonPanel.add(scheduleButton);
 
-JPanel buttonPanel = new JPanel();
-buttonPanel.setLayout(new FlowLayout());
-buttonPanel.add(scheduleButton);
-//buttonPanel.add(listAnimalsButton);
+      JButton editButton = new JButton("Edit");
+      editButton.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+          textArea.setEditable(true);
+        }
+      });
+      buttonPanel.add(editButton);
 
-JButton editButton = new JButton("Edit");
-editButton.addActionListener(new ActionListener() {
-  @Override
-  public void actionPerformed(ActionEvent e) {
-    textArea.setEditable(true); // Set the text area to be editable
-  }
-});
-buttonPanel.add(editButton);
+      JButton saveToFileButton = new JButton("Save Schedule to File");
+      saveToFileButton.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
 
-// JButton saveButton = new JButton("Save");
-// saveButton.addActionListener(new ActionListener() {
-//   @Override
-//   public void actionPerformed(ActionEvent e) {
-//     textArea.setEditable(false); // Set the text area to be non-editable
-//     String updatedText = textArea.getText(); // Get the updated text from the text area
-//     // Update the current schedule with the updated text
-//     schedule.updateSchedule(updatedText);
-//     // Display the updated schedule in the text area
-//     String scheduleString = schedule.printSchedule(); // get the string representation of the updated schedule
-//     textArea.setText(scheduleString); // set the text area to display the updated schedule string
-//   }
-// });
-//buttonPanel.add(saveButton);
-
-JButton saveToFileButton = new JButton("Save Schedule to File");
-saveToFileButton.addActionListener(new ActionListener() {
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        // Prompt the user to choose a file to save the schedule to
-        JFileChooser fileChooser = new JFileChooser();
-        int option = fileChooser.showSaveDialog(frame);
-        if (option == JFileChooser.APPROVE_OPTION) {
-            // Get the selected file and pass its path to printScheduleToFile()
+          JFileChooser fileChooser = new JFileChooser();
+          int option = fileChooser.showSaveDialog(frame);
+          if (option == JFileChooser.APPROVE_OPTION) {
             File file = fileChooser.getSelectedFile();
             String fileName = file.getAbsolutePath();
-            schedule.printScheduleToFile(fileName);
+            if (textArea.isEditable()) {
+              String modifiedSchedule = textArea.getText();
+              schedule.printScheduleToFile(modifiedSchedule, fileName);
+            } else {
+              String scheduleString = schedule.printSchedule();
+              schedule.printScheduleToFile(scheduleString, fileName);
+            }
             JOptionPane.showMessageDialog(frame, "Schedule has been saved to file:\n" + fileName);
+          }
         }
-    }
-});
-buttonPanel.add(saveToFileButton);
+      });
+      buttonPanel.add(saveToFileButton);
 
-panel.add(buttonPanel, BorderLayout.SOUTH);
+      panel.add(buttonPanel, BorderLayout.SOUTH);
 
       frame.add(panel);
       frame.setVisible(true);
