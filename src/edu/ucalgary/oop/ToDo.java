@@ -22,6 +22,10 @@ public class ToDo {
         toDoList = new ArrayList<String>();
     }
 
+    public ArrayList<String> getToDoList() {
+        return toDoList;
+    }
+
     /**
      * adds the task to the ArrayList of toDoList
      * 
