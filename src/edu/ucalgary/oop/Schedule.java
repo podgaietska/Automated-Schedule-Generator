@@ -2,6 +2,7 @@ package edu.ucalgary.oop;
 
 import java.io.*;
 import java.util.*;
+import java.util.regex.*;
 
 /**
  * The Schedule class is used to organize the tasks/feedings/etc. of
@@ -15,17 +16,12 @@ public class Schedule {
     private ArrayList<FeedingSchedule> feedings = new ArrayList<FeedingSchedule>();
     private ArrayList<CleaningCage> cageCleanings = new ArrayList<CleaningCage>();
     private ArrayList<Treatment> treatments = new ArrayList<Treatment>();;
-    private HashMap<String, Integer> animalCount = new HashMap<>();
+    private ArrayList<Integer> backupVolunteerHours = new ArrayList<Integer>();
 
     /**
      * constructor for Schedule class
      */
     public Schedule() {
-        animalCount.put("coyote", 0);
-        animalCount.put("porcupine", 0);
-        animalCount.put("fox", 0);
-        animalCount.put("raccoon", 0);
-        animalCount.put("beaver", 0);
 
         for (int i = 0; i < 24; i++) {
             schedule.put(i, new ToDo());
@@ -37,25 +33,30 @@ public class Schedule {
      * respective to the tasks added
      */
     public void addTasksToSchedule() {
-        Collections.sort(treatments, Comparator.comparing(Treatment -> Treatment.getTASK().getMAXWINDOW()));
-
         for (Treatment treatment : treatments) {
             int treatmentStartHour = treatment.getSTART_HOUR();
             int treatmentMaxWindow = treatment.getTASK().getMAXWINDOW();
-
             int currentWindow = 0;
+            boolean taskAssigned = false;
             while (currentWindow < treatmentMaxWindow) {
                 int currentHour = treatmentStartHour + currentWindow;
+                if (currentHour > 23) {
+                    currentHour = currentHour - 24;
+                }
                 if (schedule.get(currentHour).getTimeRemaining() >= treatment.getTASK().getDURATION()) {
-                    schedule.get(currentHour).addTask(
-                            treatment.getTASK().getDESCRIPTION() + " (" + treatment.getANIMAL().getNAME() + ")");
+                    schedule.get(currentHour).addTask(treatment.getTASK().getDESCRIPTION() + " (" + treatment.getANIMAL().getNAME() + ")");
                     int newTimeRemaining = schedule.get(currentHour).getTimeRemaining()
                             - treatment.getTASK().getDURATION();
                     schedule.get(currentHour).updateTimeRemaining(newTimeRemaining);
+                    taskAssigned = true;
                     break;
                 } else {
                     currentWindow++;
                 }
+            }
+            if (!taskAssigned) {
+                callBackupVolunteer(treatmentStartHour, null, treatment);
+                
             }
         }
     }
@@ -69,22 +70,55 @@ public class Schedule {
             int feedingStartHour = feeding.getStartHour();
             int feedingMaxWindow = feeding.getTimeWindow();
             int currentWindow = 0;
+            String species = feeding.getSpecies();
             boolean taskAssigned = false;
+            boolean speciesAlreadyFed = false;
+
+            Pattern pattern = Pattern.compile(species);
+
             while (currentWindow < feedingMaxWindow) {
                 int currentHour = feedingStartHour + currentWindow;
-                if (schedule.get(currentHour).getTimeRemaining() >= feeding.getDuration()) {
-                    schedule.get(currentHour).addTask(feeding.getDescription() + " " + feeding.getName());
-                    int newTimeRemaining = schedule.get(currentHour).getTimeRemaining()
-                            - feeding.getDuration();
-                    schedule.get(currentHour).updateTimeRemaining(newTimeRemaining);
-                    taskAssigned = true;
-                    break;
-                } else {
-                    currentWindow++;
+
+                if (currentHour > 23) {
+                    currentHour = currentHour - 24;
+                }
+
+                for (String otherTasks : schedule.get(currentHour).getToDoList()){
+                    Matcher matcher = pattern.matcher(otherTasks);
+                    if (matcher.find() && !schedule.get(currentHour).getToDoList().isEmpty()){
+                        speciesAlreadyFed = true;
+                    }
+                }
+
+                if (schedule.get(currentHour).getToDoList().isEmpty())
+                    speciesAlreadyFed = false;
+
+                if (speciesAlreadyFed){
+                    if (schedule.get(currentHour).getTimeRemaining() >= feeding.getDuration()) {
+                        schedule.get(currentHour).addTask(feeding.getDescription() + " " + feeding.getName());
+                        int newTimeRemaining = schedule.get(currentHour).getTimeRemaining() - feeding.getDuration();
+                        schedule.get(currentHour).updateTimeRemaining(newTimeRemaining);
+                        taskAssigned = true;
+                        break;
+                    } else {
+                        currentWindow++;
+                    }
+                }
+                else {
+                    if (schedule.get(currentHour).getTimeRemaining() >= feeding.getDuration() + feeding.getPrep()){
+                        schedule.get(currentHour).addTask(feeding.getDescription() + " " + feeding.getName());
+                        int newTimeRemaining = schedule.get(currentHour).getTimeRemaining() - (feeding.getDuration() + feeding.getPrep());
+                        schedule.get(currentHour).updateTimeRemaining(newTimeRemaining);
+                        taskAssigned = true;
+                        break;
+                    }
+                    else{
+                        currentWindow++;
+                    }
                 }
             }
             if (!taskAssigned) {
-                callBackupVolunteer(feeding);
+                callBackupVolunteer(feedingStartHour, feeding, null);
             }
         }
     }
@@ -96,7 +130,7 @@ public class Schedule {
      * @return String of all animal names
      */
     public String getAllNames() {
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder();        
         for (Treatment treatment : treatments) {
             if (!sb.toString().contains(treatment.getANIMAL().getNAME()))
                 sb.append(treatment.getANIMAL().getNAME()).append("\n");
@@ -110,8 +144,38 @@ public class Schedule {
      * 
      * @param feeding
      */
-    public void callBackupVolunteer(FeedingSchedule feeding) {
-        System.out.println("Not enough time for feeding: " + feeding.getName() + ". Calling backup volunteer.");
+    public void callBackupVolunteer(int hour, FeedingSchedule feeding, Treatment treatment) {
+        int duration = 0;
+        int maxWindow = 0;
+        int currentWindow = 0;
+        if (feeding != null){
+            duration = feeding.getDuration();
+            maxWindow = feeding.getTimeWindow();
+        }
+        else if (treatment != null){
+            duration = treatment.getTASK().getDURATION();
+            maxWindow = treatment.getTASK().getMAXWINDOW();
+        }
+        while (currentWindow < maxWindow){
+            int currentHour = hour + currentWindow;
+            if (currentHour > 23){
+                currentHour = currentHour - 24;
+            }
+            int timeRemainingWithVolunteer = 120 - schedule.get(hour).getTimeRemaining();
+            if (timeRemainingWithVolunteer >= duration){
+                if (feeding != null)
+                    schedule.get(currentHour).addTask(feeding.getDescription() + " " + feeding.getName());
+                else if (treatment != null)
+                    schedule.get(currentHour).addTask(treatment.getTASK().getDESCRIPTION() + " (" + treatment.getANIMAL().getNAME() + ")");
+                int newTimeRemaining = timeRemainingWithVolunteer - duration;
+                schedule.get(currentHour).updateTimeRemaining(newTimeRemaining);
+                backupVolunteerHours.add(currentHour);
+                break;
+            }
+            else{
+                currentWindow++;
+            }       
+        }
     }
 
     /**
@@ -130,27 +194,6 @@ public class Schedule {
                     schedule.get(i).updateTimeRemaining(newTimeRemaining);
                     break;
                 }
-            }
-        }
-    }
-
-    /**
-     * adds animals to the ArrayList<Animal>, based on the type of species they are
-     * 
-     * @param animals
-     */
-    public void addAnimals(ArrayList<Animal> animals) {
-        for (Animal animal : animals) {
-            if (animal.getSPECIES().equals("porcupine")) {
-                this.animalCount.put("porcupine", animalCount.get("porcupine") + 1);
-            } else if (animal.getSPECIES().equals("coyote")) {
-                this.animalCount.put("coyote", animalCount.get("coyote") + 1);
-            } else if (animal.getSPECIES().equals("fox")) {
-                this.animalCount.put("fox", animalCount.get("fox") + 1);
-            } else if (animal.getSPECIES().equals("raccoon")) {
-                this.animalCount.put("raccoon", animalCount.get("raccoon") + 1);
-            } else if (animal.getSPECIES().equals("beaver")) {
-                this.animalCount.put("beaver", animalCount.get("beaver") + 1);
             }
         }
     }
@@ -209,14 +252,6 @@ public class Schedule {
         return cageCleanings;
     }
 
-    /**
-     * a getter for recieving the number of animals
-     * 
-     * @return HashMap<String, Integer> animalCount
-     */
-    public HashMap<String, Integer> getAnimalCount() {
-        return animalCount;
-    }
 
     /**
      * a getter for recieving the final schedule
@@ -235,9 +270,13 @@ public class Schedule {
      * @return String representation of the schedule
      */
     public String printSchedule() {
+
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < 24; i++) {
-            sb.append(i).append(":00\n").append(schedule.get(i)).append("\n");
+            if (this.backupVolunteerHours.contains(i))
+                sb.append(i).append(":00 (Backup Volunteer needed)\n").append(schedule.get(i)).append("\n");
+            else
+                sb.append(i).append(":00\n").append(schedule.get(i)).append("\n");
         }
         return sb.toString();
     }
@@ -264,5 +303,6 @@ public class Schedule {
                 }
             }
         }
+        
     }
 }

@@ -98,8 +98,6 @@ public class Main {
 
     Schedule schedule = new Schedule();
 
-    schedule.addAnimals(animals);
-
     for (Animal animal : animals) {
       if (animal.getFeedingSchedule() != null)
         schedule.addFeeding(animal.getFeedingSchedule());
@@ -112,11 +110,9 @@ public class Main {
 
     schedule.addTasksToSchedule();
 
-    schedule.addCageCleaningToSchedule();
-
     schedule.addFeedingToSchedule();
 
-    schedule.printScheduleToFile();
+    schedule.addCageCleaningToSchedule();
 
     EventQueue.invokeLater(() -> {
       JFrame frame = new JFrame("Animal Care Schedule");
