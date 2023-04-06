@@ -116,51 +116,74 @@ public class Main {
 
     EventQueue.invokeLater(() -> {
       JFrame frame = new JFrame("Animal Care Schedule");
-      frame.setSize(800, 600);
-      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setSize(800, 600);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-      JLabel title = new JLabel("Welcome to the Animal Wildlife Rescue Centre Database!", SwingConstants.CENTER);
-      JLabel instruction = new JLabel("What would you like to do?", SwingConstants.CENTER);
+    JLabel title = new JLabel("Welcome to the Animal Wildlife Rescue Centre Database!", SwingConstants.CENTER);
+    JLabel instruction = new JLabel("What would you like to do?", SwingConstants.CENTER);
 
-      JPanel panel = new JPanel(new BorderLayout());
+    JPanel panel = new JPanel(new BorderLayout());
 
-      JPanel topPanel = new JPanel(new GridLayout(2, 1));
-      topPanel.add(title);
-      topPanel.add(instruction);
-      panel.add(topPanel, BorderLayout.NORTH);
+    JPanel topPanel = new JPanel(new GridLayout(2, 1));
+    topPanel.add(title);
+    topPanel.add(instruction);
+    panel.add(topPanel, BorderLayout.NORTH);
 
-      JTextArea textArea = new JTextArea();
-      textArea.setEditable(false);
-      JScrollPane scrollPane = new JScrollPane(textArea);
-      panel.add(scrollPane, BorderLayout.CENTER);
+    JTextArea textArea = new JTextArea();
+    textArea.setEditable(false);
+    JScrollPane scrollPane = new JScrollPane(textArea);
+    panel.add(scrollPane, BorderLayout.CENTER);
 
-      JButton scheduleButton = new JButton("Generate Schedule");
-      scheduleButton.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-          // Generate the schedule and display it in the text area
-          String scheduleString = schedule.printSchedule(); // get the string representation of the schedule
-          textArea.setText(scheduleString); // set the text area to display the schedule string
-        }
-      });
+    JButton scheduleButton = new JButton("Generate Schedule");
+    scheduleButton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        // Generate the schedule and display it in the text area
+        String scheduleString = schedule.printSchedule(); // get the string representation of the schedule
+        textArea.setText(scheduleString); // set the text area to display the schedule string
+      }
+    });
 
-      JButton listAnimalsButton = new JButton("List Animals in Shelter");
-      listAnimalsButton.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-          // List the animals in the shelter and display them in the text area
-          String animalListString = schedule.getAllNames(); // get the string representation of the animal list
-          textArea.setText(animalListString); // set the text area to display the animal list string
-        }
-      });
+    JButton listAnimalsButton = new JButton("List Animals in Shelter");
+    listAnimalsButton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        // List the animals in the shelter and display them in the text area
+        String animalListString = schedule.getAllNames(); // get the string representation of the animal list
+        textArea.setText(animalListString); // set the text area to display the animal list string
+      }
+    });
 
-      JPanel buttonPanel = new JPanel(new FlowLayout());
-      buttonPanel.add(scheduleButton);
-      buttonPanel.add(listAnimalsButton);
-      panel.add(buttonPanel, BorderLayout.SOUTH);
+    JPanel buttonPanel = new JPanel();
+    buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
+    buttonPanel.add(scheduleButton);
+    buttonPanel.add(listAnimalsButton);
 
-      frame.add(panel);
-      frame.setVisible(true);
+    JButton editButton = new JButton("Edit");
+    editButton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        textArea.setEditable(true); // Set the text area to be editable
+      }
+    });
+    buttonPanel.add(editButton);
+
+    JButton saveButton = new JButton("Save");
+    saveButton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        textArea.setEditable(false); // Set the text area to be non-editable
+        String updatedText = textArea.getText(); // Get the updated text from the text area
+        // Save the updated text and display it in the text area
+        textArea.setText(updatedText);
+      }
+    });
+    buttonPanel.add(saveButton);
+
+    panel.add(buttonPanel, BorderLayout.SOUTH);
+
+    frame.add(panel);
+    frame.setVisible(true);
     });
 
   }
