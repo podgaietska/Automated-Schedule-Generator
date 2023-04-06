@@ -16,8 +16,10 @@ import java.awt.event.ActionListener;
  * It contains the entry point for the program and initializes
  * the necessary objects to run the application.
  * 
- * To run this file, please go to the README.md file given in the GitHub repository,
- * where it gives the necessary commands to compile and run this program depending on the 
+ * To run this file, please go to the README.md file given in the GitHub
+ * repository,
+ * where it gives the necessary commands to compile and run this program
+ * depending on the
  * operating system you're on
  * 
  * @author Nicole Izdraila, Mariia Podgaietska, Afrah Mohammad, Axel Sanchez
@@ -26,9 +28,12 @@ import java.awt.event.ActionListener;
 
 public class Main {
   /**
-   * The main method for the Wildlife Rescue Centre program. Returns a GUI interface for
-   * users to interact with, where they can see the overall generated schedule and the
-   * list of animal (nicknames) that are currently present in the given SQL database
+   * The main method for the Wildlife Rescue Centre program. Returns a GUI
+   * interface for
+   * users to interact with, where they can see the overall generated schedule and
+   * the
+   * list of animal (nicknames) that are currently present in the given SQL
+   * database
    * file.
    *
    * @param args The command-line arguments for the program. The program requires
@@ -38,7 +43,7 @@ public class Main {
 
     String url = "jdbc:mysql://localhost:3306/EWR";
     String username = "root";
-    String password = "sea100403"; // Enter your personal password
+    String password = "Barcelona15"; // Enter your personal password
 
     ArrayList<Animal> animals = new ArrayList<>();
     ArrayList<Task> tasks = new ArrayList<>();
