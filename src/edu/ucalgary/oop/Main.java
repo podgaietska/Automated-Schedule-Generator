@@ -43,8 +43,8 @@ public class Main {
   public static void main(String[] args) {
 
     String url = "jdbc:mysql://localhost:3306/EWR";
-    String username = "root";
-    String password = "AxOmSaPe15092002"; // Enter your personal password
+    String username = "oop";
+    String password = "password"; // Enter your personal password
 
     ArrayList<Animal> animals = new ArrayList<>();
     ArrayList<Task> tasks = new ArrayList<>();
