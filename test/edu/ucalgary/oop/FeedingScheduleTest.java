@@ -3,6 +3,11 @@ package edu.ucalgary.oop;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+/*
+ * @author Nicole Izdraila, Mariia Podgaietska, Afrah Mohammad, Axel Sanchez
+ * @since 2023-03-23
+ */
+
 public class FeedingScheduleTest {
 
   @Test

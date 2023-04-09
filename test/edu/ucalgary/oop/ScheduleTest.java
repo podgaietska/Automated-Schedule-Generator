@@ -4,6 +4,11 @@ import java.util.HashMap;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+/*
+ * @author Nicole Izdraila, Mariia Podgaietska, Afrah Mohammad, Axel Sanchez
+ * @since 2023-03-23
+ */
+
 public class ScheduleTest {
 
   @Test
@@ -41,6 +46,4 @@ public class ScheduleTest {
     assertEquals(1, schedule.getTreatment().size());
     assertEquals(treatment, schedule.getTreatment().get(0));
   }
-
-  // Additional tests can be added for the other methods in the Schedule class.
 }
